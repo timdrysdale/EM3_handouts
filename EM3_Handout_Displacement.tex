@@ -1,0 +1,130 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage{svg}
+\usepackage[utf8x]{inputenc}
+%\usepackage[greek,english]{babel} 
+\usepackage{textcomp}
+\usepackage{textgreek}
+%\numberwithin{equation}{section}
+
+\newcommand{\uvec}[1]{{\bm{\hat{\textnormal{\bfseries #1}}}}}
+\newcommand{\ux}{\uvec{x}}
+\newcommand{\uy}{\uvec{y}}
+\newcommand{\uv}{\uvec{v}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\ua}{\uvec{a}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+\makeatletter
+\providecommand\add@text{}
+\newcommand\tagaddtext[1]{%
+  \gdef\add@text{#1\gdef\add@text{}}}% 
+\renewcommand\tagform@[1]{%
+  \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
+}
+\makeatother
+
+\title{EM3 Displacement Current}
+\author{Professor Timothy Drysdale}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+The concept of displacement current is necessary to remove the paradoxes in the incomplete Maxwell's equations we have treated to date\sidenote{
+The derivative-form of Maxwells's equations with only the conduction current $J_{cond}$:
+\begin{align*}
+\nabla\cdot\vec{D} & = \rho \\
+\nabla\cdot\vec{B }& = 0 \\
+\nabla\times\vec{E} & = -\frac{d\vec{B}}{dt} \\
+\nabla\times\vec{H} & = \vec{J_{cond}} 
+\end{align*}
+The modification we will make today is adding a new current (displacement current $\vec{J_{disp}}$) into Ampere's Law to obtain
+\[ \nabla\times\vec{H}  = \vec{J_{cond}} + \vec{J_{disp}} \]
+which is usually written
+\[ \nabla\times\vec{H}  = \vec{J} + \frac{d\vec{D}}{dt} \]
+where $\vec{J} = \vec{J_{cond}}$ as per the EM3 formula sheet, and $\vec{J_{disp}}=\frac{d\vec{D}}{dt}$ .}. Without displacement current, we couldn't have magnetic fields in empty space, because there would be nothing to conduct the current that is needed to generate them. Yet, exist in free space they do\sidenote{Without magnetic fields in free space we could not have radio waves, which are handy for things like the WiFi that was used to upload this document to \emph{Learn}.}, so a current of some sort we must have. This explanation follows Kraus\sidenote{J. D. Kraus, ``Electromagnetics,'' 3rd Edition (International Student Version), \emph{McGraw-Hill Book Company}, Singapore, 1985;  pp. 340 -- 342.} and is most definitely not an examinable derivation!
+\end{abstract}
+
+\section{Capacitors}
+Our first hint of a paradox with our incomplete version of Maxwell's equations is that current can flow through a capacitor, yet there is no metal in the middle for it to flow through, as shown in Figure~\ref{fig:paradox}. The incomplete form of Ampere's Law finds no magnetic field around the line integral shown in the middle of the capacitor, because there is no conduction current enclosed. If we move the integration contour over the terminal wires on either side, we enclose a current and yield a magnetic field. So how does the current cross the gap? Is there a magnetic field in the gap? If there are neither, how does the current get from one side to the other, and if there is, how do we improve Ampere's Law to resolve the paradox?
+
+%\sidenote{Spoiler alert - there is a new type of current that flows in the gap between the plates, that also generates a magnetic field similar to what a current flowing in a wire would produce, so all is well - by the time we are done here, we will not have had to resort to any magic to solve the paradox.}
+
+
+\begin{marginfigure}
+\includesvg{capacitor_paradox}
+\caption{Capacitor paradox: where's the current in the middle? }
+\label{fig:paradox}
+\end{marginfigure} 
+
+Let's back our way into figuring out what is going on in the middle of the capacitor, by starting with some standard first year circuit analysis of a parallel RC circuit, as shown in Figure~\ref{fig:rclumped}.
+\begin{marginfigure}
+\includesvg{RC_lumped}
+\caption{A parallel RC circuit}
+\label{fig:rclumped}
+\end{marginfigure} 
+The current in the resistor is a conduction current, which is given by Ohm's law as
+\begin{equation} I_R = \frac{V}{R}.\end{equation}
+The current in the capacitor is proportional to the rate of change of charge $Q$ (for which we can substitute $Q=CV$): 
+\begin{equation} 
+\label{eq:ic}
+I_C = \frac{dQ}{dt}=C\frac{dV}{dt}.
+\end{equation}
+The current $I_C$ through the capacitor is the \emph{displacement current}. The displacement current is not a \emph{conduction current}, even though the conduction current seen flowing in the metal wire terminals of the capacitor certainly makes it clear there was a current of one sort or another flowing in the gap between the plates, so as to provide the continuous unbroken path that current needs to flow. What happened? We know that capacitors store energy in the attractive force between the positive charge of $+Q$ on the positive plate and $-Q$ on the negative plate, so  charges must be dragged onto or pushed off the plates to achieve that net charge (they're displaced, funnily enough). But this current only flows when we are changing the total charge in the capacitor, in other words, we only need to push charges onto the plates, or drag them off the plates, if we want to change the capacitor voltage. Hence a capacitor can have a non-zero voltage drop across it, but no current flowing - this occurs when the amount of energy stored in the capacitor is steady, or unchanging. If there is a current flowing, the voltage is going up (or down) as the energy stored increases or decreases. And in this case, we want to know how to model the displacement current in between the plates, and how does it create magnetic fields. 
+
+Let's switch models from a lumped circuit, to a 3D model (shown in 2D cross section in Figure~\ref{fig:rc3d}.  We'll assume the resistors and capacitors are ideal, and neglect the hassle of calculating fringing fields. It won't hurt this analysis.
+\begin{marginfigure}
+\includesvg{2d_cap}
+\caption{Cross-section of a 3D model of resistor and capacitor in parallel}
+\label{fig:rc3d}
+\end{marginfigure} 
+The electric fields inside both the components are the same (we made them the same height $d$), so 
+\begin{equation} E = \frac{V}{d}. \end{equation} 
+The current density inside the resistor $J_R$ is the ratio of the current to cross-sectional area $A$
+\begin{equation}
+J_R = \frac{I_R}{A}, \tagaddtext{[\SI{}{\ampere\per\metre\squared}]}
+\end{equation}
+and also equal to the product of the electric field $E$ and conductivity $\sigma$
+\begin{equation}
+J_R = E\sigma. \tagaddtext{$\big[\frac{volts}{meter}\times\frac{mhos}{meter}\big]$} 
+\end{equation}
+For the capacitor recall that $C = \frac{\epsilon{}A}{d}$, and substitute into Eq.~\ref{eq:ic} to get
+\begin{equation}
+I_C = \frac{\epsilon{}Ad}{d}\frac{dE}{dt} = \epsilon{}A\frac{dE}{dt}.
+\end{equation}
+We calculated a current density for the resistor by dividing the total current by the cross sectional area. Let's do the same for the capacitor, to find the current density in the capacitor $\vec{J_{capacitor}}$
+\begin{equation}
+\frac{I_C}{A}=\vec{J_{capacitor}}=\epsilon\frac{dE}{dt}, \tagaddtext{$\left[\frac{A}{m^2}=\frac{F}{m}\times\frac{V/m}{s}\right]$}
+\end{equation}
+into which we can substitute $D = \epsilon{}E$ to get
+\begin{equation}
+\vec{J_{capacitor}} = \frac{dD}{dt}.
+\end{equation}
+
+It turns out that these are the same general forms for the conduction current (resistor) and displacement current ( capacitor), such that
+\begin{align}
+\vec{J_R} & = \vec{J_{cond}} = \sigma\vec{E}, \\
+\vec{J_{capacitor}} &= \vec{J_{disp}} = \epsilon\frac{d\vec{E}}{dt} = \frac{dD}{dt}.
+\end{align}
+
+Note that both currents can flow in the same element if it combines the properties of both capacitance and resistance, such as a capacitor filled with a conducting dielectric, as shown in Figure~\ref{fig:jtotal}. Then both types of current are present, and the total current density is 
+\begin{equation}
+\vec{J} = \vec{J_{total}} = \vec{J_{cond}} + \vec{J_{disp}}.
+\end{equation}
+
+\begin{marginfigure}
+\includesvg{jtotal}
+\caption{A capacitor with a conducting dielectric has both capacitance and resistance, and therefore supports both conduction and displacement currents.}
+\label{fig:jtotal}
+\end{marginfigure} 
+
+
+Now that we know about displacement current, we can see it is possible to generate a magnetic flux by changing an electric flux in empty space, with no need for a conductor carrying a current. We know from Faraday's law that a changing magnetic flux generates an electric flux, so now we have the building blocks of making radio waves that can travel through freespace, in a self-sustaining game of converting themselves from magnetic to electric to magnetic form over and over, with no wires needed (except, perhaps, in the antennas at either end of the communication).
+
+\end{document}

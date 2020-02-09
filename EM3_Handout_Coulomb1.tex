@@ -1,0 +1,105 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage{svg}
+\usepackage[utf8x]{inputenc}
+%\usepackage[greek,english]{babel} 
+\usepackage{textcomp}
+\usepackage{textgreek}
+%\numberwithin{equation}{section}
+
+\newcommand{\uvec}[1]{{\bm{\hat{\textnormal{\bfseries #1}}}}}
+\newcommand{\ux}{\uvec{x}}
+\newcommand{\uy}{\uvec{y}}
+\newcommand{\uv}{\uvec{v}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\ua}{\uvec{a}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+\makeatletter
+\providecommand\add@text{}
+\newcommand\tagaddtext[1]{%
+  \gdef\add@text{#1\gdef\add@text{}}}% 
+\renewcommand\tagform@[1]{%
+  \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
+}
+\makeatother
+
+\title{EM3 Worked Examples on Coulomb - Part 1}
+\author{Professor Timothy Drysdale}
+\begin{document}
+\maketitle
+
+\section{Unit vector}
+
+Assume we are given an arbitrary  vector of non-unitary magnitude $\vec{v}$ in 2-D 
+\begin{marginfigure}
+\includesvg{unit_vector}
+\end{marginfigure}
+\begin{equation}
+\label{eq:vector}
+\vv = 3\ux + 2\uy, 
+\end{equation}
+which we wish to convert into a unit vector $\uv$. We must scale $\vv$ so its magnitude is unitary, which we can do by dividing by the magnitude $\abs{\vv}$
+\begin{equation}
+\label{eq:unitvector}
+\uv = \frac{\vv}{\abs{\vv}}. 
+\end{equation}
+First we work out the magnitude of $\vv$
+\begin{equation}
+\label{eq:magnitude}
+\abs{\vv} = \sqrt{3^2 + 2^2} = \sqrt{13},
+\end{equation}
+then substitute Eq.~\ref{eq:vector} and Eq.~\ref{eq:magnitude} into Eq.~\ref{eq:unitvector}, giving
+\begin{equation}
+\uv = \frac{3}{\sqrt{13}}\ux + \frac{2}{\sqrt{13}}\uy. 
+\end{equation}
+
+We can check the unit vector is the correct length by calculating its magnitude (which should be $1$):
+\begin{align}
+\abs{\uv} & = \sqrt{\left(\frac{3}{\sqrt{13}}\right)^2 + \left(\frac{2}{\sqrt{13}}\right)^2} \\
+& =  \sqrt{\frac{3^2 + 2^2}{13}} \\
+& = \sqrt{\frac{13}{13}} \\
+& = 1
+\end{align}
+
+\section{Two charges acting on a third charge}
+
+\emph{Given two charges of 2C, one each located at $(-1m,0)$ and $(0,-1m)$, what is the force on a test charge of 1C located at the origin $(0,0)$?}
+\begin{marginfigure}
+\includesvg{two_charges}
+\end{marginfigure}
+\vspace{0.5cm}
+
+Assuming the force $F$ in Newtons exerted on one charge $Q_0$ by another $Q_1$ is directed in direction $\uvec{a}$, then the force can be calculated by
+\begin{equation}
+\vec{F} = \frac{Q_0Q_1\ua}{4\pi\epsilon{}r^2}\tagaddtext{[\si{\newton}].}
+\end{equation}
+
+For the case of the first charge at $(-1m,0)$, $r = 1m$, $Q_0 = 2C$, and $Q_1 = 1C$, giving
+\begin{align}
+\vec{F_x} & = \frac{2C.1C\ux}{4\pi\epsilon{}1^2} \\
+     & = \frac{\ux}{2\pi\epsilon{}} \\
+    & = 1.8\times10^{10}\ux\tagaddtext{[\si{\newton}].}
+\end{align}
+
+By symmetry, because the charges are the same distance from the test charge, 
+\begin{equation}
+\vec{F_y} = 1.8\times10^{10}\uy\tagaddtext{[\si{\newton}].}
+\end{equation}
+
+Thus the total force from our two charges is 
+\begin{equation}
+\vec{F} = 1.8\times10^{10}\ux + 1.8\times10^{10}\uy\tagaddtext{[\si{\newton}],}
+\end{equation}
+with a magnitude of 
+\begin{align}
+\abs{\vec{F}} & = \sqrt{\vec{F_x}^2+\vec{F_y}^2} \\
+& = 2.54\times10^{10}\tagaddtext{[\si{\newton}].}
+\end{align}
+
+\end{document}

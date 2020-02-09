@@ -1,0 +1,275 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage{svg}
+\usepackage[utf8x]{inputenc}
+%\usepackage[greek,english]{babel} 
+\usepackage{textcomp}
+\usepackage{textgreek}
+%\numberwithin{equation}{section}
+
+\newcommand{\uvec}[1]{{\bm{\hat{\textnormal{\bfseries #1}}}}}
+\newcommand{\ux}{\uvec{x}}
+\newcommand{\uy}{\uvec{y}}
+\newcommand{\uv}{\uvec{v}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\ua}{\uvec{a}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+\makeatletter
+\providecommand\add@text{}
+\newcommand\tagaddtext[1]{%
+  \gdef\add@text{#1\gdef\add@text{}}}% 
+\renewcommand\tagform@[1]{%
+  \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
+}
+\makeatother
+
+\title{EM3 Worked Examples on Coulomb - Part 2}
+\author{Professor Timothy Drysdale}
+\begin{document}
+\maketitle
+
+\section{Line charge}
+
+\emph{Assuming a line charge extending along the $x$-axis, from $-\infty$ to $+\infty$, and of charge density $\rho_l$ [C/m], what is the total electric field $\vec{E}$ at the point  $(0,R)$ on the $y$-axis?}
+\vspace{0.5cm}
+\begin{marginfigure}
+\includesvg{linecharge_b}
+\end{marginfigure}
+
+It is tempting to formulate the answer to this problem in the same Cartesian co-ordinate system in which we receive the description. This is what I did the first time around, and it is fine to do so, so long as you don't mind solving an integral of the form
+\begin{equation}
+\int_{-\infty}^{\infty}\frac{1}{(R^2 + x^2)^{3/2}}dx.
+\end{equation}
+This integral can be solved using a trig substitution, which is perfectly do-able (see the end of the doc for that version of the solution). There is however a more elegant way that removes the difficulties before you come to perform the integration.
+
+
+What is the more elegant method? The first step to finding a new approach is to consider what we are really doing - and that is breaking the line charge up into small elements $dq$ and working out what contribution $d\vec{E}$ that they make to the total electric field $\vec{E}$. We can describe the position of the element $dq$ using its $x$ coordinate in a Cartesian coordinate system, but we could consider other ways of representing its position. For example, we note that the trig substitution hints at a transformation to a cylindrical coordinate system. 
+\begin{marginfigure}
+\includesvg{linecharge_c}
+\end{marginfigure}
+
+It turns out that if we make the conversion to the cylindrical coordinate system before we assemble the integral, then we get a much simpler integral. There is no way to know this sort of thing before you try it, and there is no expectation that you would automatically spot the hint - in my case, I puzzled it out from seeing the problem set up to use a cylindrical coordinate system. Don't expect yourself to have been able independently develop all the tricks you will come across in the world of mathematics - each of them has been hard won by whoever first worked them out. In my own experience of working out new formulas for things, you just try a bunch of things, use a lot of paper, and then afterwards you present it in a nice linear way. The reality is that an efficient presentation is just about communicating the final result to others, and (deliberately or not) it obscures all the missteps and wrong turns taken on the way. So let's proceed with a look through the solution (and see if you can spot any further improvements).
+
+\subsection{Cylindrical coordinate system approach}
+
+We start by recognising the right angled triangle and the relationships between the opposite side, hypotenuse and $\sin\theta$:
+\begin{marginfigure}
+\includesvg{linecharge_a}
+\end{marginfigure}
+\begin{subequations}
+\label{eq:sin}
+\begin{align}
+\sin\theta & = \frac{R}{r} \label{eq:sina}\\
+r & = \frac{R}{\sin\theta}. \label{eq:sinb}\ 
+\end{align}
+\end{subequations}
+Since we want to convert from Cartesian to cylindrical coordinates, it will be handy to have versions of the equations that have both $x$ and $\theta$ in them directly, rather than have them hiding behind $r$. We know from Pythagoras that we can also represent $r$ in terms of $x$
+\begin{equation}
+\label{eq:r}
+r = \sqrt{R^2 + x^2}, 
+\end{equation}
+and then substitute it into Eq.~\ref{eq:sin} 
+\begin{subequations}
+\label{eq:sinr}
+\begin{align}
+\sin\theta & = \frac{R}{\sqrt{R^2 + x^2}} \label{eq:sinra} \\
+\sqrt{R^2 + x^2}  & = \frac{R}{\sin\theta} \label{eq:sinrb}. 
+\end{align}
+\end{subequations}
+
+\subsection{Electric field}
+For any given element of charge $dq$, the contribution it makes to the electric field is $d\vec{E}$, which can be calculated by starting with Coulomb's Law
+\begin{equation}
+\vec{F} = \frac{Q_0Q_1\uvec{r}}{4\pi\epsilon{}r^2}
+\end{equation}
+but modifying to calculate the electric field instead (which is the force on a 1C test charge $Q_1$):
+\begin{equation}
+\vec{E} = \frac{\vec{F}}{Q_1},
+\end{equation}
+leaving us to substitute in the value of  the element of the line charge $dq$ as $Q_0$\sidenote{We add a $d$ to the left hand side to turn $\vec{E}$ into $d\vec{E}$ to distinguish it from the total electric field $\vec{E}$ (which is due to the whole line charge), and we also include a representation of the absolute value (Eq.~\ref{eq:des}) because we will soon use it.} 
+\begin{subequations}
+\begin{align}
+d\vec{E} & = \frac{dq\uvec{r}}{4\pi\epsilon{}r^2} \label{eq:dev}\\
+dE = \abs{d\vec{E}}  & = \frac{dq}{4\pi\epsilon{}r^2}\label{eq:des}
+\end{align}
+\end{subequations}
+
+
+The electric field contribution $d\vec{E}$ comprises a portion in $y$-direction $dE_y$ that we need to calculate, and a portion in the $x$-direction that we do not;\sidenote{Small warning with respect to Eq.~\ref{eq:dve}: $dE_x$ is non-zero whenever $x$ is non-zero, so almost all the time it has a non-zero value. Hence we still have to track the angle $\theta$ of $d\vec{E}$ as we do in Eq.~\ref{eq:dey}. It's only the \emph{integral} value $E_x = \int_{-\infty}^{\infty} dE_x dx$ that is zero (at least, it is for this problem, but might not be for all problems).}
+\begin{equation}
+\label{eq:dve}
+d\vec{E} = dE_x\ux + dE_y\uy.
+\end{equation}  
+
+We don't need to calculate $dE_x$ because the left and the right hand side of the line charge are the same length, so their contributions to $d\vec{E}$ will be equal and opposite, and therefore zero. We can't calculate $dE_y$
+\sidenote{We've gone for a scalar value here, for convenience in the coming work. Keeping it a vector would just mean lugging around a unit vector on the right hand side, which we wouldn't be putting to use. If we want to turn it back into the vector, we can always do that like this:
+\begin{equation*}
+d\vec{E_y} = dE_y\uy.
+\end{equation*}}
+directly, so we obtain it from $dE$ (Eq.~\ref{eq:des}) by trigonometry:
+\begin{equation}
+\label{eq:dey}
+dE_y = dE\sin\theta.
+\end{equation}
+
+Substituting Eq.~\ref{eq:des} into Eq.~\ref{eq:dey} gives us
+\begin{equation}
+dE_y = \frac{1}{4\pi\epsilon}.dq.\frac{1}{r^2}.\sin\theta,
+\end{equation} 
+into which we can substitute in Eq.~\ref{eq:sinb} so as to have the geometric components represented in terms of $\theta$:
+\begin{equation}
+\label{eq:allbutdq}
+dE_y = \frac{1}{4\pi\epsilon}.dq.\frac{\sin^2\theta}{R^2}.\sin\theta.
+\end{equation} 
+Our next task is to put $dq$ in terms of $\theta$.
+
+\begin{marginfigure}
+\includesvg{linecharge_d}
+\end{marginfigure}
+
+\subsection{Element of charge}
+In Eq.~\ref{eq:allbutdq} we did not specify how the element of charge $dq$ related to the line charge density, but we must do this before we can integrate. The magnitude of the element of charge depends on its linear length $dx$ and the charge density $\rho_l$
+\begin{equation}
+\label{eq:dq}
+dq = \rho_ldx.
+\end{equation}
+We are planning to convert to a cylindrical coordinate system, so that we can integrate with respect to $\theta$. We need to relate $dx$ to $d\theta$, as it applies to $dq$.
+\begin{marginfigure}
+\includesvg{linecharge_e}
+\end{marginfigure}
+
+By trigonometry\sidenote{First we approximate the straight leg of the little triangle as $rd\theta$, which is the length of the curved arc of radius $r$ swept through a small angle $d\theta$.} we obtain that
+\begin{equation}
+dx = \frac{rd\theta}{\sin\theta},
+\end{equation}
+and then we substitute Eq.~\ref{eq:sinb} to put $r$ in terms of $\theta$:
+\begin{equation}
+\label{eq:dx}
+dx = \frac{Rd\theta}{\sin^2\theta},
+\end{equation}
+which we can substitute into Eq.~\ref{eq:dq} to give
+\begin{equation}
+\label{eq:dqintheta}
+dq = \rho_l \frac{R}{\sin^2\theta}d\theta.
+\end{equation}
+Now we can substitute for $dq$ in Eq.~\ref{eq:allbutdq} giving
+\begin{equation}
+dE_y = \frac{1}{4\pi\epsilon}.\rho_l \frac{R}{\sin^2\theta}.\frac{\sin^2\theta}{R^2}.\sin\theta d\theta,
+\end{equation} 
+which simplifies by cancelling to
+\begin{equation}
+\label{eq:deyall}
+dE_y = \frac{\rho_l}{4\pi\epsilon{}R}\sin\theta d\theta.
+\end{equation} 
+\begin{marginfigure}
+\includesvg{cos}
+\end{marginfigure}
+\marginnote{$\cos\pi = -1$, $\cos{}0 = 1$} 
+Now we can integrate
+\sidenote{
+The limits of integration are
+\[ \theta \xrightarrow[x \to -\infty]{} \pi \]
+and
+\[ \theta \xrightarrow[x \to +\infty]{} 0 \]
+} and substitute the limits into $\cos\theta$ to obtain
+\begin{align}
+\label{eq:intdey}
+E_y &= \int_{\pi}^{0}dE_y d\theta \\
+& =  \frac{\rho_l}{4\pi\epsilon{}R} \int_{\pi}^{0}\sin\theta d\theta \\
+& = \frac{\rho_l}{4\pi\epsilon{}R} \Big[-\cos\theta\Big]_{\pi}^{0}\\
+& = \frac{\rho_l}{4\pi\epsilon{}R} \big(-(-1) --1 \big) \\
+& = \frac{\rho_l}{4\pi\epsilon{}R} \left(1+1\right) \\
+& = \frac{\rho_l}{2\pi\epsilon{}R}\\
+\end{align}
+Giving our final result as
+\begin{equation*}
+\boxed{\vec{E} = \frac{\rho_l}{2\pi\epsilon{}R}\uvec{y}}
+\end{equation*}
+
+\section{Cartesian coordinate system approach}
+\label{sec:cartesian}
+If we wish to treat the problem directly in the Cartesian coordinate system, we need to put all the variables in terms of $x$. We know that $E_x = 0$, so we need only consider integrating $dE_y$, which can be found from $dE$ by the method of similar triangles:
+\begin{equation}
+\frac{dE_y}{dE}=\frac{R}{r}, 
+\end{equation}
+giving
+\begin{equation}
+dE_y=\frac{R}{r}dE 
+\end{equation}
+Hence our integral can be formed as
+\begin{equation}
+E_y = R \int_{-\infty}^{\infty} \frac{dE}{r} dx. 
+\end{equation}
+Substituting $dE$ from Eq.~\ref{eq:des} gives \marginnote{\[dE = \frac{dq}{4\pi\epsilon{}r^2}\]} 
+\begin{equation}
+E_y = R \int_{-\infty}^{\infty} \frac{dq}{4\pi\epsilon{}r^3} dx. 
+\end{equation}
+The element of charge is defined directly in terms of $dx$:
+\begin{equation}
+dq = \rho_l dx,
+\end{equation}
+so we can ignore the double $dx$ and take the $\rho_l$ outside the integral along with the other constants
+\begin{equation}
+E_y = \frac{\rho_lR}{4\pi\epsilon{}} \int_{-\infty}^{\infty} \frac{1}{r^3} dx. 
+\end{equation}
+Now we substitute in Eq.~\ref{eq:r} to get our tricky integral\marginnote{\[r = \sqrt{R^2 + x^2}\] }
+\begin{equation}
+\label{eq:eyc}
+E_y = \frac{\rho_lR}{4\pi\epsilon{}} \int_{-\infty}^{\infty}\frac{1}{(R^2 + x^2)^{3/2}}dx.
+\end{equation}
+In order to remove the square root, we want to find a substitution that has the form 
+\begin{equation*}
+a^2 + b^2 = c^2
+\end{equation*}
+For example, \marginnote{From the identity $1 + \tan^2\theta = \sec^2\theta$}
+\begin{equation}
+R^2 + R^2\tan^2\theta = R^2\sec^2\theta.
+\end{equation}
+We'll make the substitution $x = R \tan\theta$, giving us
+\begin{equation}
+\label{eq:dxsub}
+dx = R\sec^2\theta d\theta.
+\end{equation}
+Now our integrand can be substituted
+\begin{align}
+(R^2 + x^2)^{3/2} & = (R^2 +  R^2\tan^2\theta)^{3/2} \\
+& = (R^2\sec^2\theta)^{3/2}\\
+& = R^3\sec^3\theta \label{eq:rxsub}.
+\end{align}
+Now, we can substitute Eqs~\ref{eq:dxsub}~and~\ref{eq:rxsub} into Eq.~\ref{eq:eyc}, as long as we change the limits of integration appropriately\marginnote{
+We transform our limits according to the substitution we made
+\[ x = R \tan\theta\]
+\[\theta  = \tan^{-1}\frac{x}{R} \]
+\[\tan^{-1}\frac{-\infty}{R}  =\tan^{-1} -\infty  = -\frac{\pi}{2}\]
+\[\tan^{-1}\frac{+\infty}{R}  =\tan^{-1} +\infty = \frac{\pi}{2}\]
+}
+\begin{equation}
+E_y = \frac{\rho_lR}{4\pi\epsilon{}} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{ R\sec^2\theta }{R^3\sec^3\theta}d\theta
+\end{equation}
+which simplifies to\marginnote{$\sec\theta$ is easy to handle because \[\sec\theta = \frac{1}{\cos\theta}\]}
+\begin{align}
+E_y & = \frac{\rho_l}{4\pi\epsilon{}R} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{1}{\sec\theta}d\theta,\\
+ & =\frac{\rho_l}{4\pi\epsilon{}R} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos\theta d\theta,
+\end{align}
+We integrate
+\begin{marginfigure}
+\includesvg{sin}
+\end{marginfigure}
+\marginnote{$\sin\frac{\pi}{2}=1$,$\sin-\frac{\pi}{2}=-1$}
+\begin{align}
+Ey & =\frac{\rho_l}{4\pi\epsilon{}R} \Big[ \sin\theta \Big]_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \\
+& = \frac{\rho_l}{4\pi\epsilon{}R} \big(1 - (-1) \big) \\
+& = \frac{\rho_l}{2\pi\epsilon{}R} 
+\end{align}
+Giving our final result, as before, as
+\begin{equation*}
+\boxed{\vec{E} = \frac{\rho_l}{2\pi\epsilon{}R}\uvec{y}}
+\end{equation*}
+
+\end{document}

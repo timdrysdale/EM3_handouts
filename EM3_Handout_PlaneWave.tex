@@ -1,0 +1,171 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage{svg}
+\usepackage[utf8x]{inputenc}
+%\usepackage[greek,english]{babel} 
+\usepackage{textcomp}
+\usepackage{textgreek}
+%\numberwithin{equation}{section}
+
+\newcommand{\uvec}[1]{{\bm{\hat{\textnormal{\bfseries #1}}}}}
+\newcommand{\ux}{\uvec{x}}
+\newcommand{\uy}{\uvec{y}}
+\newcommand{\uv}{\uvec{v}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\ua}{\uvec{a}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+\makeatletter
+\providecommand\add@text{}
+\newcommand\tagaddtext[1]{%
+  \gdef\add@text{#1\gdef\add@text{}}}% 
+\renewcommand\tagform@[1]{%
+  \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
+}
+\makeatother
+
+\title{EM3 Planewave Derivations}
+\author{Professor Timothy Drysdale}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Here we rehearse the combined solution of Gauss's Laws, Ampere's Law, and Faraday's Law to show the existence of electromagnetic waves (let there be light!) We'll work out the fields of a plane wave in an infinite vacuum, and in an infinite conductive material. This handout is provided to fill in the gaps that inevitably arise when presenting the highlights of a long derivation through the medium of PowerPoint, just in case it helps anyone who likes to see each brick go into the wall. This derivation is most definitely NOT examinable - but you'll need be able to use the results of it to calculate the fields of a wave in a vacuum and in an conductive medium, as well as knowing the phase relationship between the electric and magnetic fields in both cases.
+\end{abstract}
+
+\section{Getting Started}
+
+We are going to mess about\sidenote{Some of the maths will involve tricks and identities that will be at the very least unfamiliar, and may even look downright shady at times, but rest assured that they do indeed apply for all possible cases and are not just tricks with limited applicability. Even the scary/exotic div, grad and curl identities are well known  to work for all possible fields and are not just rabbits we pulled out of hats.} with Ampere's and Faraday's Laws until we get something sensible that tells us how a plane wave travels about the place. Let's start with the derivative-form of Maxwells's equations from the EM3 formula sheet:
+\begin{align}
+\nabla\cdot\vec{D} & = \rho \label{eq:gaussE}\\
+\nabla\cdot\vec{B }& = 0 \label{eq:gaussM}\\
+\nabla\times\vec{E} & = \frac{\partial\vec{B}}{\partial t} \label{eq:Ab}\\
+\nabla\times\vec{H} & = \vec{J} + \frac{\partial\vec{D}}{\partial t} \label{eq:Fd}
+\end{align}
+
+We are going to focus on figuring out plane waves that are travelling through wide open empty space where there is nothing to bump into - that avoids complicating things any more than they already are\sidenote{If it helps, imagine we are in a distant region of the Universe that is devoid of even space dust for light weeks around us - that's long enough to delay any boundary condition problems until the second part of the course, literally!}. To continue keeping the maths as simple as possible, we're going to state we are not expecting any sources, or charges in this wide open region. So $\rho=0$, and we can substitute that and $D=\epsilon{}E$ into Eq.~\ref{eq:gaussE} to give something that will come in handy soon:
+\begin{equation}
+\nabla\cdot\vec{E} = 0. \label{eq:gaussE0}
+\end{equation}
+\marginnote{In a vacuum, $\mu=\mu_0$ and $\epsilon = \epsilon_0$ everywere, but for convenience we'll just continue to use $\mu$ and $\epsilon$ without the subscripts.} 
+
+Let's start by tweaking Eqs.~\ref{eq:Ab}\,\&\,\ref{eq:Fd} to contain only $E$ and $H$, so that we can subsitute one into another without getting our fluxes and fields mixed up. We recall that $B=\mu{}H$ and that $D=\epsilon{}E$, and we know that with no sources in vacuum there are no currents, so $\vec{J}=0$. We can tidy them up thus
+\begin{align}
+\nabla\times\vec{E} & = -\mu\frac{\partial\vec{H}}{\partial t}, \label{eq:curlE}\\
+\nabla\times\vec{H} & = \epsilon\frac{\partial\vec{E}}{\partial t}. \label{eq:curlH} 
+\end{align}
+
+We now move onto bit where we do a bunch of non-obvious things as if they were obvious all along - don't worry, the steps \emph{are} exactly as unobvious as they seem to you. This is just the refined procedure that is left over after a bunch of great minds have spent a lot of graphite and laminar pinus radiata. if you suspend disbelief for a moment you'll see it is an elegant way to get where we want to go.
+
+The first shady trick is that we take the curl of both sides of Eq.~\ref{eq:curlE}
+\begin{align}
+\nabla\times\left(\nabla\times\vec{E}\right) & = \nabla\times\left(-\mu\frac{\partial \vec{H}}{\partial t} \right) \\
+ & = -\mu \frac{\partial}{\partial t}\nabla\times{}\vec{H}.\label{eq:curlcurlE} 
+\end{align}
+Working on the right hand side, we can substitute in Eq.~\ref{eq:curlH}\marginnote{\[ \nabla\times\vec{H} = \epsilon\frac{\partial\vec{E}}{\partial t}\]}
+\begin{align}
+\nabla\times\left(\nabla\times\vec{E}\right) &= -\mu \frac{\partial}{\partial t}\nabla\times{}\vec{H} \\
+&= -\mu \frac{\partial}{\partial t}\left(\epsilon\frac{\partial\vec{E}}{\partial t}\right) \\
+&= -\mu\epsilon \frac{\partial^2\vec{E}}{\partial t^2}.
+\end{align}
+Now working on the left hand side, we can use this curl-of-curl identity
+\begin{equation}
+\nabla\times\left(\nabla\times\vec{A}\right)=\nabla\left(\nabla\cdot\vec{A}\right) - \nabla^{2}\vec{A} \label{eq:curlofcurl}
+\end{equation}
+to obtain
+\begin{equation}
+\nabla\left(\nabla\cdot\vec{E}\right) - \nabla^{2}\vec{E}= -\mu\epsilon \frac{\partial^2\vec{E}}{\partial t^2}.
+\end{equation}
+Now we substitute in Eq.~\ref{eq:gaussE0}\marginnote{\[\nabla\cdot\vec{E} = 0\]} to trim away some of the complicated stuff and leave us with a (relatively!) straightforward differential equation \marginnote{\[\nabla{}0=0\]}
+\begin{equation}
+ \nabla^{2}\vec{E}= \mu\epsilon \frac{\partial^2\vec{E}}{\partial t^2}.\label{eq:Ediff}
+\end{equation}
+
+Equation~\ref{eq:Ediff} relates space to time\sidenote{This type of linear partial differential equation is known in classical physics as a wave equation. Wave equations are used for mechanical waves like sound, water and seismic waves, as well as electromagnetic waves, where the speed of the wave is determined by the coefficients in the equation.}, so if we solve it, it will tell us how $\vec{E}$ behaves as a function of position and time - and it's going to be a wave. Let's explore the space (left hand side) a bit more by expanding it in Cartesian coordinates
+
+\begin{equation}
+\nabla^2\vec{E} = \frac{\partial^2 E_x}{\partial x^2}\uvec{x} + \frac{\partial^2 E_y}{\partial y^2}\uvec{y} + \frac{\partial^2 E_z}{\partial z^2}\uvec{z}.
+\end{equation}
+
+To keep it simple, let's assume we have a plane wave with the electric field oriented along $x$-direction only, then $E_y = E_z = 0$, reducing our wave equation to 1D 
+\begin{equation}
+\frac{\partial^2 E_x}{\partial x^2}\uvec{x}  = \mu\epsilon \frac{d^2\vec{E_x}}{dt^2}. \label{eq:Exdiff}
+\end{equation}
+
+Solutions to the wave equation can be done in a number of ways\sidenote{The wave equation can be solved by an algebraic method, by separation of the space and time variables, or perhaps by other methods. The available numerical solvers can be categorised as either time or frequency domain techniques.} but it can be proven by direct substitution\sidenote{
+Direct substitution of the solution shows it is valid
+\begin{align*}
+\frac{d^2}{dx^2} Ae^{j\left(\omega{}t-\beta{}x\right)} &= \mu\epsilon\frac{\partial^2}{\partial t^2} Ae^{j\left(\omega{}t-\beta{}x\right)}\\
+Aj^2(-\beta)^{2}e^{j\left(\omega{}t-\beta{}x\right)} &= -A\mu\epsilon{}j^2\omega^{2}e^{j\left(\omega{}t-\beta{}x\right)}\\
+\beta^2 &= \mu\epsilon\omega^2  \\
+\left(\frac{2\pi}{\lambda}\right)^2 &= \frac{1}{c^2}(2\pi{}f)^2\\
+\left(\frac{2\pi}{\lambda}\right)^2 &= \frac{1}{c^2}\left(\frac{2\pi{}c}{\lambda}\right)^2\\
+\left(\frac{2\pi}{\lambda}\right)^2 &= \left(\frac{2\pi}{\lambda}\right)^2_\blacksquare
+\end{align*}
+} 
+that a valid solution is 
+\begin{equation}
+\vec{E_x}(x,t) = Ae^{j\left(\omega{}t-\beta{}x\right)}
+\end{equation}
+where $A$ is an arbitrary and constant magnitude, $\omega = 2\pi{}f$ is the radian frequency, $f$ is the frequency in Hertz, $\beta=\frac{2\pi}{\lambda}$ is the phase constant, $\lambda=\frac{c}{f}$ is the wavelength, and the speed of the wave is $c=\frac{1}{\sqrt{\mu\epsilon}}\approx 3\times10^8\SI{}{\metre\per\second}$.  
+
+\subsection{Conductive materials}
+The chances of us being out in space for all our electromagnetics is vanishingly small. So we should repeat the derivation again but this time assume we are in a 3D volume of conductive material of conductivity $\sigma$ with infinite extent in all directions, i.e. $\vec{J} = \sigma\vec{E} \neq0$, such that Ampere's law can be expressed
+\begin{equation}
+\nabla\times\vec{H} = \sigma\vec{E} + \epsilon\frac{\partial\vec{E}}{\partial t} \label{eq:amperesigma}
+\end{equation}
+ This way, we get the full benefit of Ampere's Law, but by assuming the region is impossibly large, we still avoid the issues of bumping into the edges of the material (for a while yet, at least).
+
+We return to Eq.~\ref{eq:curlcurlE} and substitute in Eq.~\ref{eq:amperesigma}\marginnote{\[ \nabla\times\left(\nabla\times\vec{E}\right) = \nabla\times\left(-\mu\frac{\partial \vec{H}}{\partial t} \right)\]}
+\begin{equation}
+\nabla\times\left(\nabla\times\vec{E}\right) = -\mu\sigma\frac{\partial \vec{E}}{\partial t}  -\mu\epsilon \frac{\partial^2\vec{E}}{\partial t^2}.
+\end{equation}
+As before, we use Eqs.~\ref{eq:gaussE0}~\&~\ref{eq:curlofcurl} to simplify the left hand side, leaving
+\begin{equation}
+\nabla^2\vec{E}\ = \mu\sigma\frac{\partial \vec{E}}{\partial t}  +\mu\epsilon \frac{\partial^2\vec{E}}{\partial t^2}\label{eq:diffEfull}
+\end{equation}
+which can be reduced to 1D as before by setting $E_y  = E_z = 0$ to get
+\begin{equation}
+\frac{\partial^2\vec{E_x}}{\partial x^2}\ = \mu\sigma\frac{\partial \vec{E_x}}{\partial t}  +\mu\epsilon \frac{\partial^2\vec{E_x}}{\partial t^2}
+\label{eq:diffEfullx}
+\end{equation}
+
+We know that current flowing in a material causes heating, which means a conversion of energy from the wave into heat. This can be represented by a small tweak to our solution to the wave equation, to include a decay term
+\begin{equation}
+\vec{E_x}(x,t) = Ae^{j\left(\omega{}t-\beta{}x\right)}e^{-\alpha{}x} = Ae^{j\omega{}t-\gamma{}x}\label{eq:lossysolution}
+\end{equation} 
+where the newly-introduced propagation constant is complex $\gamma = \alpha + j\beta$, such that $\beta$ continues to describe the phase constant as before (which relates to the wavelength), but we add in a new term, the attenuation constant $\alpha$ that represents the spatial decay of the wave (a decaying wave does not change wavelength, just amplitude, hence $\alpha$ and $\beta$ are separate). The more conductive the material, the bigger is $\alpha$, and the quicker the decay of the wave. 
+
+\section{Attenuation constant}
+The attenuation constant $\alpha$ can be worked out by substituting Eq.~\ref{eq:lossysolution} into Eq.~\ref{eq:diffEfullx} to obtain the dispersion relation, then solving for $\gamma$ (of which $\alpha$ is the real part). \marginnote{
+\begin{align*}
+\frac{\partial^2 E_x}{\partial x^2} &= (-\gamma)^{2}Ae^{j\omega{}t-\gamma{}x}\\
+\frac{\partial E_x}{\partial t} &= j\omega{}Ae^{j\omega{}t-\gamma{}x}\\
+\frac{\partial^2 E_x}{\partial t^2} &= (j\omega)^{2}Ae^{j\omega{}t-\gamma{}x}\\
+\end{align*}
+}
+We first perform the substitution
+\begin{equation}
+\gamma^{2}Ae^{j\omega{}t-\gamma{}x} = j\mu\sigma\omega{}Ae^{j\omega{}t-\gamma{}x} - \mu\epsilon\omega^{2}Ae^{j\omega{}t-\gamma{}x},
+\end{equation}
+then remove the common factor of $Ae^{j\omega{}t-\gamma{}x}$ to give
+\begin{equation}
+\gamma^{2} = j\mu\sigma\omega - \mu\epsilon\omega^{2}
+\end{equation}
+which rearranges to\sidenote{spot that we play around with $j$ terms to neaten up the equation} \marginnote{In the EM3 formula sheet, $\gamma$ is given using a different notation for the square root, but is the same equation
+\[ \gamma = \left[ j\omega\mu\left(\sigma + j\omega\epsilon\right)\right]^{\frac{1}{2}} \]}
+\begin{equation}
+\gamma = \sqrt{j\omega\mu\left(\sigma + j\omega\epsilon\right)}
+\end{equation}
+
+
+
+
+\end{document}
