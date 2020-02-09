@@ -38,7 +38,7 @@
 
 \begin{abstract}
 \noindent
-This handout is provided to fill in the gaps that inevitably arise when presenting the highlights of a long derivation through the medium of PowerPoint, just in case it helps anyone who likes to see each brick go into the wall. This derivation is most definitely NOT examinable - but you'll need be able to use the results of it to calculate the fields of a wave in a dielectric and in a conductive medium, as well as knowing the phase relationship between the electric and magnetic fields in both cases.
+This handout is provided to fill in the gaps that inevitably arise when presenting the highlights of a long derivation through the medium of PowerPoint, just in case it helps anyone who likes to see each brick go into the wall. The derivations themselves are most definitely NOT examinable - but you'll need be able to use the results to calculate the fields of a wave in a dielectric and in a conductive medium, as well as knowing the phase relationship between the electric and magnetic fields in both cases. So this document contains \emph{some} examinable material (mainly toward the end).
 \begin{marginfigure}
 \includesvg{brick_wall}
 \end{marginfigure}
@@ -138,6 +138,14 @@ that a valid solution is
 \vec{E_x}(z,t) = Ae^{j\left(\omega{}t-\beta{}z\right)}
 \end{equation}
 where $A$ is an arbitrary and constant magnitude, $\omega = 2\pi{}f$ is the radian frequency, $f$ is the frequency in Hertz, $\beta=\frac{2\pi}{\lambda}$ is the phase constant, $\lambda=\frac{c}{f}$ is the wavelength, and the speed of the wave is $c=\frac{1}{\sqrt{\mu\epsilon}}\approx 3\times10^8\SI{}{\metre\per\second}$.  
+
+Where does the speed of light fit into the equation? In a wave equation of standard form, the coefficient of the time derivative is equal to the inverse square of the speed of the wave, so 
+\begin{align}
+\frac{1}{c^2} & = \mu\epsilon \\
+c &= \frac{1}{\sqrt{\mu\epsilon}}\\
+ c &= \frac{1}{\sqrt{4\pi\times 10^{-7}8.854\times 10^{-12}}} \text{\quad in a vacuum}\\
+c  &\approx 3\times10^8 \SI{}{\meter\per\second}.
+\end{align}
 
 \subsection{Conductive materials}
 The chances of us being out in space for all our electromagnetics is vanishingly small. So we should repeat the derivation again but this time assume we are in a 3D volume of conductive material of conductivity $\sigma$ with infinite extent in all directions, i.e. $\vec{J} = \sigma\vec{E} \neq0$, such that Ampere's law can be expressed
@@ -242,10 +250,91 @@ In a conductor
 \[ \beta = \frac{1}{\delta} \] so in a conductor
 \[ \lambda = 2\pi\delta \]} is $2\pi\delta$, yet the wave is considered fully attenuated when it reaches 1\% of its original amplitude, at $4.6\delta$ \marginnote{$e^{-4.6}=0.01$}. Since $4.6 < 2\pi$, not even a full wavelength of the $\SI{100}{\mega\hertz}$ wave penetrates into the gold.
 
+So far so good - we've worked out the electric field for the wave in a dielectric and conductor. Let's look at the counterpart magnetic field now. 
+
 \section{Magnetic Field}
-So far so good - we've worked out the electric field. We need its counterpart magnetic field now (we can't have one without the other in a plane wave). We can use Faraday's Law (Eq.~\ref{eq:Fd} to work out the magnetic field for our plane wave, by substituting in Eq.~\ref{eq:lossysolution}, and recalling that $\vec{D} = \epsilon\vec{E}$
-%\begin{equation}
-%\nabla\times\vec{H} = \vec{J} + \frac{\partial\vec{D}}{\partial t} 
-%Ae^{j\omega{}t-\gamma{}x}\label{eq:foo}
-%\end{equation}
+ We can use Faraday's Law (Eq.~\ref{eq:Fd}) to work out the magnetic field for our plane wave, by substituting in Eq.~\ref{eq:lossysolution}, and recalling that $\vec{D} = \epsilon\vec{E}$
+\begin{align}
+\nabla\times\vec{H} &= \vec{J} + \frac{\partial\vec{D}}{\partial t} \\
+\left( \frac{\partial H_z}{\partial y} - \frac{\partial H_y}{\partial z} \right) \uvec{x} &=\left( \sigma E_x + \epsilon \frac{\partial E_x}{\partial t}\right)\uvec{x}.
+\end{align}
+Since a plane wave must be everywhere the same in the in-plane directions (for this wave, $x$ and $y$) $\frac{\partial H_z}{\partial y} = 0$, so we can simplify and drop the unit vectors
+
+\begin{align}
+ - \frac{\partial H_y}{\partial z} & = \sigma E_x + \epsilon \frac{\partial E_x}{\partial t} \\
+ - H_y & = \int \left(\sigma E_x + \epsilon \frac{\partial E_x}{\partial t}\right) \partial z \\
+ &= \int \sigma A e^{j\omega t - \gamma z} \partial z + \int j\omega\epsilon Ae^{j\omega t - \gamma z} \partial z \\
+H_y & = \frac{\sigma}{\gamma} A e^{j\omega t - \gamma z} + \frac{j\omega\epsilon}{\gamma} A e^{j\omega t - \gamma z}\\
+H_y &= A e^{j\omega t - \gamma z} \left(\frac{\sigma}{\gamma} + \frac{j\omega\epsilon}{\gamma}\right) 
+\end{align}
+
+Our troubles are not quite yet over because $\gamma$ is complex, so we can't just eyeball the phase relationship between the electric and magnetic field (yet). But we can return to our assumptions that the material is either a dielectric ($\sigma= 0$) or a conductor ($\sigma >> \omega\epsilon$) and treat each case separately. 
+For the dielectric case\marginnote{
+For a dielectric,
+\begin{align*}
+\gamma^2 &= -\omega^2\mu\epsilon \\
+  &= j^2\omega^2\mu\epsilon.
+\end{align*}
+where we recalled that $-1=j^2$. Hence  
+\[ \gamma = j\omega\sqrt{\mu\epsilon} \]
+}
+\begin{align}
+H_y &= A e^{j\omega t - \gamma z} \frac{j\omega\epsilon}{\gamma} \\
+ &= A e^{j\omega t - \gamma z} \frac{j\omega\epsilon}{j\omega\sqrt{\mu\epsilon}} \\ 
+ &= A e^{j\omega t - \gamma z} \sqrt{\frac{\epsilon}{\mu}} 
+\end{align}
+
+The ratio between the electric and magnetic fields gives us the impedance $Z$, which is
+\begin{align}
+Z_{diel} &= \frac{E}{H} \\
+ &= \frac{A e^{j\omega t - \gamma z}}{A e^{j\omega t - \gamma z} \sqrt{\frac{\epsilon}{\mu}}} \\
+ & =  \sqrt{\frac{\mu}{\epsilon}} \\
+ & = \sqrt{\frac{4\pi\times 10^{-7}}{8.854\times 10^{-12}}} \text{in a vacuum}\\
+ & \approx \SI{377}{\ohm}
+\end{align}
+
+Both the electric and magnetic fields have only real coefficients, so they are both in phase in a dielectric, i.e.
+\begin{equation}
+\phi = \arctan(\frac{\Im(Z)}{\Re(Z)}) = 0.
+\end{equation}
+
+In the case of the conductor, $\sigma >> \omega\epsilon$, and $\gamma = \sqrt{j\omega\mu\sigma}$ so
+\begin{align}
+H_y &= A e^{j\omega t - \gamma z} \frac{\sigma}{\gamma} \\
+ &= A e^{j\omega t - \gamma z} \sqrt{\frac{\sigma}{2\omega\mu}}\left(1-j\right).
+\end{align}
+The impedance becomes\marginnote{
+To eliminate complex numbers in the denominator, multiply by the conjugate/conjugate
+\begin{align*}
+\frac{1}{1+j} &= \frac{1}{1+j} \frac{1-j}{1-j}\\
+&= \frac{1-j}{2}
+\end{align*}
+Hence \begin{align*}
+\frac{\sigma}{\gamma} & = \frac{\sigma\sqrt{2}}{(1+j)\sqrt{\omega\mu\sigma}} \\
+&= \frac{\sqrt{2\sigma}}{(1+j)\sqrt{\omega\mu}}\\
+&= \frac{\sqrt{2\sigma}}{\sqrt{\omega\mu}}\frac{1-j}{2}\\
+&= \sqrt{\frac{\sigma}{2\omega\mu}}(1-j)
+\end{align*}
+}
+\begin{align}
+Z_{cond} &= \frac{E}{H} \\
+&= \frac{A e^{j\omega t - \gamma z}}{A e^{j\omega t - \gamma z} \sqrt{\frac{\sigma}{2\omega\mu}}\left(1-j\right)}\\
+& = \frac{1}{ \sqrt{\frac{\sigma}{2\omega\mu}}\left(1-j\right)}\\
+& = \sqrt{\frac{2\omega\mu}{\sigma}}\frac{\left(1+j\right)}{2}\\
+& = \sqrt{\frac{\omega\mu}{2\sigma}}(1+j)
+\end{align}
+\marginnote{You can arrive at same impedance result almost directly from the EM3 formula sheet by setting $j\omega\epsilon = 0$ and then taking the $j$ out of the square root using the same identity we used earlier.}
+We can see from the presence of $1+j$ in the impedance that the time-phase relationship is now that the electric field is $\pi/4$ ahead of the magnetic field, due to the conductive medium.
+\begin{align}
+\phi &= \arctan(\frac{\Im(Z)}{\Re(Z)}) \\
+& = \arctan(\frac{1}{1}) \\
+& = \pi/4.
+\end{align}
+The time-phase relationships for both cases are illustrated in Figure~\ref{fig:planewaves}.
+\begin{figure}
+\label{fig:planewaves}
+\includesvg[width=8cm]{planewaves}
+\caption{Illustration of the time-phase relationship in dielectric (same), and conductor (electric leads by $\frac{\pi}{4}$)}.
+
+\end{figure}
 \end{document}
