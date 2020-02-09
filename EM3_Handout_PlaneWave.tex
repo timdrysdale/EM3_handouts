@@ -30,19 +30,35 @@
 }
 \makeatother
 
-\title{EM3 Planewave Derivations}
+\title{EM3 The Planewave}
 \author{Professor Timothy Drysdale}
 \begin{document}
 \maketitle
 
 \begin{abstract}
 \noindent
-Here we rehearse the combined solution of Gauss's Laws, Ampere's Law, and Faraday's Law to show the existence of electromagnetic waves (let there be light!) We'll work out the fields of a plane wave in an infinite vacuum, and in an infinite conductive material. This handout is provided to fill in the gaps that inevitably arise when presenting the highlights of a long derivation through the medium of PowerPoint, just in case it helps anyone who likes to see each brick go into the wall. This derivation is most definitely NOT examinable - but you'll need be able to use the results of it to calculate the fields of a wave in a vacuum and in an conductive medium, as well as knowing the phase relationship between the electric and magnetic fields in both cases.
+This handout is provided to fill in the gaps that inevitably arise when presenting the highlights of a long derivation through the medium of PowerPoint, just in case it helps anyone who likes to see each brick go into the wall. This derivation is most definitely NOT examinable - but you'll need be able to use the results of it to calculate the fields of a wave in a dielectric and in a conductive medium, as well as knowing the phase relationship between the electric and magnetic fields in both cases.
+\begin{marginfigure}
+\includesvg{brick_wall}
+\end{marginfigure}
 \end{abstract}
+
+\section{Introduction}
+Here we rehearse the combined solution of Gauss's Laws, Ampere's Law, and Faraday's Law to show the existence of electromagnetic waves (let there be light!) We'll work out the fields of a plane wave travelling in the $+z$ direction in an infinite region to be
+\begin{align*}
+E_x(z,t) &= E_0e^{j\omega{}t - \gamma{}z}\\
+H_y(z,t) &= \frac{E_0}{\gamma}e^{j\omega{}t - \gamma{}z}\left(\sigma + j\omega\epsilon\right)
+\end{align*}
+\begin{marginfigure}
+\includesvg{planewave_dielectric}
+\end{marginfigure}
+where the propagation constant $\gamma$ is 
+\[ \gamma = \left[j\omega\mu\left(\sigma+j\omega\epsilon \right)\right]^{\frac{1}{2}},\]
+$\omega$ is the radian frequency such that $\omega=2\pi{}f$ where $f$ is frequency in Hertz, $\sigma$ is conductivity in Siemens per metre, $\epsilon = \epsilon_r\epsilon_0$ is the permittivity and $\mu=\mu_r\mu_0$ is the permeability. 
 
 \section{Getting Started}
 
-We are going to mess about\sidenote{Some of the maths will involve tricks and identities that will be at the very least unfamiliar, and may even look downright shady at times, but rest assured that they do indeed apply for all possible cases and are not just tricks with limited applicability. Even the scary/exotic div, grad and curl identities are well known  to work for all possible fields and are not just rabbits we pulled out of hats.} with Ampere's and Faraday's Laws until we get something sensible that tells us how a plane wave travels about the place. Let's start with the derivative-form of Maxwells's equations from the EM3 formula sheet:
+We are going to mess about\sidenote{Some of the maths will involve tricks and identities that will be at the very least unfamiliar, and may even look downright shady at times, but rest assured that even the scary/exotic div, grad and curl identities are well founded, and not just rabbits we pulled out of hats. Someone else pulled them out of the hat, and it took them a lot of work, so we'll say a breezy ``thank-you'' and get on with putting their hard work to use in getting us to where we need to go.} with Ampere's and Faraday's Laws until we get something sensible that tells us how a plane wave travels about the place. Let's start with the derivative-form of Maxwells's equations from the EM3 formula sheet:
 \begin{align}
 \nabla\cdot\vec{D} & = \rho \label{eq:gaussE}\\
 \nabla\cdot\vec{B }& = 0 \label{eq:gaussM}\\
@@ -64,7 +80,7 @@ Let's start by tweaking Eqs.~\ref{eq:Ab}\,\&\,\ref{eq:Fd} to contain only $E$ an
 
 We now move onto bit where we do a bunch of non-obvious things as if they were obvious all along - don't worry, the steps \emph{are} exactly as unobvious as they seem to you. This is just the refined procedure that is left over after a bunch of great minds have spent a lot of graphite and laminar pinus radiata. if you suspend disbelief for a moment you'll see it is an elegant way to get where we want to go.
 
-The first shady trick is that we take the curl of both sides of Eq.~\ref{eq:curlE}
+The first seemingly shady trick is that we take the curl of both sides of Eq.~\ref{eq:curlE}, but the motivation is that it sets us up to turn the curl into a vector Laplacian (so long as we are in a source-free region)
 \begin{align}
 \nabla\times\left(\nabla\times\vec{E}\right) & = \nabla\times\left(-\mu\frac{\partial \vec{H}}{\partial t} \right) \\
  & = -\mu \frac{\partial}{\partial t}\nabla\times{}\vec{H}.\label{eq:curlcurlE} 
@@ -88,22 +104,28 @@ Now we substitute in Eq.~\ref{eq:gaussE0}\marginnote{\[\nabla\cdot\vec{E} = 0\]}
  \nabla^{2}\vec{E}= \mu\epsilon \frac{\partial^2\vec{E}}{\partial t^2}.\label{eq:Ediff}
 \end{equation}
 
-Equation~\ref{eq:Ediff} relates space to time\sidenote{This type of linear partial differential equation is known in classical physics as a wave equation. Wave equations are used for mechanical waves like sound, water and seismic waves, as well as electromagnetic waves, where the speed of the wave is determined by the coefficients in the equation.}, so if we solve it, it will tell us how $\vec{E}$ behaves as a function of position and time - and it's going to be a wave. Let's explore the space (left hand side) a bit more by expanding it in Cartesian coordinates
-
+Equation~\ref{eq:Ediff} relates space to time\sidenote{This type of linear partial differential equation is known in classical physics as a wave equation. Wave equations are used for mechanical waves like sound, water and seismic waves, as well as electromagnetic waves, where the speed of the wave is determined by the coefficients in the equation.}, so if we solve it, it will tell us how $\vec{E}$ behaves as a function of position and time - and it's going to be a wave. Let's explore the space (left hand side) a bit more by expanding it in Cartesian coordinates\sidenote{The expansion is based on \[\nabla^2=\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \] }
 \begin{equation}
-\nabla^2\vec{E} = \frac{\partial^2 E_x}{\partial x^2}\uvec{x} + \frac{\partial^2 E_y}{\partial y^2}\uvec{y} + \frac{\partial^2 E_z}{\partial z^2}\uvec{z}.
+\nabla^2\vec{E} = \nabla^2\vec{E_x}\uvec{x} + \nabla^2\vec{E_y}\uvec{y} + \nabla^2\vec{E_z}\uvec{z},  
 \end{equation}
-
-To keep it simple, let's assume we have a plane wave with the electric field oriented along $x$-direction only, then $E_y = E_z = 0$, reducing our wave equation to 1D 
+Since $E_x \neq 0$ and $E_y = E_z = 0$
 \begin{equation}
-\frac{\partial^2 E_x}{\partial x^2}\uvec{x}  = \mu\epsilon \frac{d^2\vec{E_x}}{dt^2}. \label{eq:Exdiff}
+\nabla^2\vec{E} = \frac{\partial^2E_x}{\partial x^2} + \frac{\partial^2E_x}{\partial y^2} + \frac{\partial^2E_x}{\partial z^2} \uvec{x}, 
+\end{equation}
+but we know that $E_x$ can only vary\sidenote{If $E_x$ varied in the in-plane directions of $x$ and $y$ the wave would no longer be a plane wave, by definition.} in the direction of propagation $z$, so two of the double derivatives are zero, leaving
+\begin{equation}
+\nabla^2\vec{E} =\frac{\partial^2E_x}{\partial z^2}\uvec{x}. 
+\end{equation}
+Hence our wave equation becomes 
+\begin{equation}
+\frac{\partial^2 E_x}{\partial z^2}\uvec{z}  = \mu\epsilon \frac{d^2\vec{E_x}}{dt^2}. \label{eq:Exdiff}
 \end{equation}
 
 Solutions to the wave equation can be done in a number of ways\sidenote{The wave equation can be solved by an algebraic method, by separation of the space and time variables, or perhaps by other methods. The available numerical solvers can be categorised as either time or frequency domain techniques.} but it can be proven by direct substitution\sidenote{
 Direct substitution of the solution shows it is valid
 \begin{align*}
-\frac{d^2}{dx^2} Ae^{j\left(\omega{}t-\beta{}x\right)} &= \mu\epsilon\frac{\partial^2}{\partial t^2} Ae^{j\left(\omega{}t-\beta{}x\right)}\\
-Aj^2(-\beta)^{2}e^{j\left(\omega{}t-\beta{}x\right)} &= -A\mu\epsilon{}j^2\omega^{2}e^{j\left(\omega{}t-\beta{}x\right)}\\
+\frac{d^2}{dz^2} Ae^{j\left(\omega{}t-\beta{}z\right)} &= \mu\epsilon\frac{\partial^2}{\partial t^2} Ae^{j\left(\omega{}t-\beta{}z\right)}\\
+Aj^2(-\beta)^{2}e^{j\left(\omega{}t-\beta{}z\right)} &= -A\mu\epsilon{}j^2\omega^{2}e^{j\left(\omega{}t-\beta{}z\right)}\\
 \beta^2 &= \mu\epsilon\omega^2  \\
 \left(\frac{2\pi}{\lambda}\right)^2 &= \frac{1}{c^2}(2\pi{}f)^2\\
 \left(\frac{2\pi}{\lambda}\right)^2 &= \frac{1}{c^2}\left(\frac{2\pi{}c}{\lambda}\right)^2\\
@@ -112,7 +134,7 @@ Aj^2(-\beta)^{2}e^{j\left(\omega{}t-\beta{}x\right)} &= -A\mu\epsilon{}j^2\omega
 } 
 that a valid solution is 
 \begin{equation}
-\vec{E_x}(x,t) = Ae^{j\left(\omega{}t-\beta{}x\right)}
+\vec{E_x}(z,t) = Ae^{j\left(\omega{}t-\beta{}z\right)}
 \end{equation}
 where $A$ is an arbitrary and constant magnitude, $\omega = 2\pi{}f$ is the radian frequency, $f$ is the frequency in Hertz, $\beta=\frac{2\pi}{\lambda}$ is the phase constant, $\lambda=\frac{c}{f}$ is the wavelength, and the speed of the wave is $c=\frac{1}{\sqrt{\mu\epsilon}}\approx 3\times10^8\SI{}{\metre\per\second}$.  
 
@@ -131,33 +153,46 @@ As before, we use Eqs.~\ref{eq:gaussE0}~\&~\ref{eq:curlofcurl} to simplify the l
 \begin{equation}
 \nabla^2\vec{E}\ = \mu\sigma\frac{\partial \vec{E}}{\partial t}  +\mu\epsilon \frac{\partial^2\vec{E}}{\partial t^2}\label{eq:diffEfull}
 \end{equation}
-which can be reduced to 1D as before by setting $E_y  = E_z = 0$ to get
+which can be reduced to our plane wave with $E_x\neq0$ propagating in the $+z$ direction as before 
 \begin{equation}
-\frac{\partial^2\vec{E_x}}{\partial x^2}\ = \mu\sigma\frac{\partial \vec{E_x}}{\partial t}  +\mu\epsilon \frac{\partial^2\vec{E_x}}{\partial t^2}
+\frac{\partial^2\vec{E_x}}{\partial z^2}\ = \mu\sigma\frac{\partial \vec{E_x}}{\partial t}  +\mu\epsilon \frac{\partial^2\vec{E_x}}{\partial t^2}.
 \label{eq:diffEfullx}
 \end{equation}
 
-We know that current flowing in a material causes heating, which means a conversion of energy from the wave into heat. This can be represented by a small tweak to our solution to the wave equation, to include a decay term
+We know that current flowing in a material causes heating, which means a conversion of energy from the wave into heat. This can be represented by a small tweak to our solution to the wave equation,\sidenote{We can show the new solution is valid by substituting it back into Eq.~\ref{eq:diffEfullx}. First we calculate the individual parts
+\begin{align*}
+\frac{\partial^2}{\partial z^2} Ae^{j\omega{}t-\gamma{}z} & = \left(-\gamma\right)^2Ae^{j\omega{}t-\gamma{}z}\\
+\frac{\partial}{\partial t} Ae^{j\omega{}t-\gamma{}z} & = j\omega{}Ae^{j\omega{}t-\gamma{}z}\\
+\frac{\partial^2}{\partial t^2} Ae^{j\omega{}t-\gamma{}z} & = \left(j\omega\right)^2Ae^{j\omega{}t-\gamma{}z}
+\end{align*}
+then substitute into Eq.~\ref{eq:diffEfullx} and eliminate common factors
+\begin{align*}
+\left(-\gamma\right)^2Ae^{j\omega{}t-\gamma{}z} & = Ae^{j\omega{}t-\gamma{}z}\left(\sigma\mu\left(j\omega{}\right) + \mu\epsilon\left(j\omega\right)^2  \right)\\
+\gamma^2&=\left(j\omega\mu\sigma - \omega^2\mu\epsilon\right)_\blacksquare
+\end{align*}
+} to include a decay term
 \begin{equation}
-\vec{E_x}(x,t) = Ae^{j\left(\omega{}t-\beta{}x\right)}e^{-\alpha{}x} = Ae^{j\omega{}t-\gamma{}x}\label{eq:lossysolution}
+\vec{E_x}(z,t) = Ae^{j\left(\omega{}t-\beta{}z\right)}e^{-\alpha{}z} = Ae^{j\omega{}t-\gamma{}z}\label{eq:lossysolution}
 \end{equation} 
 where the newly-introduced propagation constant is complex $\gamma = \alpha + j\beta$, such that $\beta$ continues to describe the phase constant as before (which relates to the wavelength), but we add in a new term, the attenuation constant $\alpha$ that represents the spatial decay of the wave (a decaying wave does not change wavelength, just amplitude, hence $\alpha$ and $\beta$ are separate). The more conductive the material, the bigger is $\alpha$, and the quicker the decay of the wave. 
 
+
 \section{Attenuation constant}
-The attenuation constant $\alpha$ can be worked out by substituting Eq.~\ref{eq:lossysolution} into Eq.~\ref{eq:diffEfullx} to obtain the dispersion relation, then solving for $\gamma$ (of which $\alpha$ is the real part). \marginnote{
-\begin{align*}
-\frac{\partial^2 E_x}{\partial x^2} &= (-\gamma)^{2}Ae^{j\omega{}t-\gamma{}x}\\
-\frac{\partial E_x}{\partial t} &= j\omega{}Ae^{j\omega{}t-\gamma{}x}\\
-\frac{\partial^2 E_x}{\partial t^2} &= (j\omega)^{2}Ae^{j\omega{}t-\gamma{}x}\\
-\end{align*}
-}
+The attenuation constant $\alpha$ can be worked out by substituting Eq.~\ref{eq:lossysolution} into Eq.~\ref{eq:diffEfullx} to obtain the dispersion relation, then solving for $\gamma$ (of which $\alpha$ is the real part). 
+%\marginnote{
+%\begin{align*}
+%\frac{\partial^2 E_x}{\partial x^2} &= (-\gamma)^{2}Ae^{j\omega{}t-\gamma{}x}\\
+%\frac{\partial E_x}{\partial t} &= j\omega{}Ae^{j\omega{}t-\gamma{}x}\\
+%\frac{\partial^2 E_x}{\partial t^2} &= (j\omega)^{2}Ae^{j\omega{}t-\gamma{}x}\\
+%\end{align*}
+%}
 We first perform the substitution
 \begin{equation}
 \gamma^{2}Ae^{j\omega{}t-\gamma{}x} = j\mu\sigma\omega{}Ae^{j\omega{}t-\gamma{}x} - \mu\epsilon\omega^{2}Ae^{j\omega{}t-\gamma{}x},
 \end{equation}
 then remove the common factor of $Ae^{j\omega{}t-\gamma{}x}$ to give
 \begin{equation}
-\gamma^{2} = j\mu\sigma\omega - \mu\epsilon\omega^{2}
+\gamma^{2} = j\omega\mu\sigma - \omega^{2}\mu\epsilon
 \end{equation}
 which rearranges to\sidenote{spot that we play around with $j$ terms to neaten up the equation} \marginnote{In the EM3 formula sheet, $\gamma$ is given using a different notation for the square root, but is the same equation
 \[ \gamma = \left[ j\omega\mu\left(\sigma + j\omega\epsilon\right)\right]^{\frac{1}{2}} \]}
@@ -165,7 +200,21 @@ which rearranges to\sidenote{spot that we play around with $j$ terms to neaten u
 \gamma = \sqrt{j\omega\mu\left(\sigma + j\omega\epsilon\right)}
 \end{equation}
 
+Things get a bit tricky now because there is no simple algebraic manipulation that will result in a general case we can use across all types of media. However, for the conductive material we are in, the case is at least relatively straightforward, because in a lossy material $\frac{\sigma}{\omega} >> \epsilon$, although for the arrangement of this equation on the EM3 formula sheet, it is easier to think of it as $\epsilon \to 0$, giving\sidenote{We'll need to use this identity \[ \sqrt{j}=\frac{(1+j)}{\sqrt{2}}\]}
+\begin{equation}
+\gamma \approx \frac{1}{\sqrt{2}}\sqrt{\omega\mu\sigma}(j+1)
+\end{equation}
+If you are struggling to figure out how to re-arrange the equation, your bail-out option is to substitute everything in and work out the complex number numerically. You'll still need this identity though
+\begin{equation} 
+\sqrt{j}=\frac{(1+j)}{\sqrt{2}}.
+\end{equation}
 
+We'll take a look at the consequences of this large attenuation in a conductive medium in a worked example.
 
-
+\section{Magnetic Field}
+We can use Faraday's Law (Eq.~\ref{eq:Fd} to work out the magnetic field for our plane wave, by substituting in Eq.~\ref{eq:lossysolution}, and recalling that $\vec{D} = \epsilon\vec{E}$
+%\begin{equation}
+%\nabla\times\vec{H} = \vec{J} + \frac{\partial\vec{D}}{\partial t} 
+%Ae^{j\omega{}t-\gamma{}x}\label{eq:foo}
+%\end{equation}
 \end{document}

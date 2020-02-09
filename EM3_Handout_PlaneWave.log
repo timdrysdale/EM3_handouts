@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.19)  9 FEB 2020 01:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.19)  9 FEB 2020 14:56
 entering extended mode
-**C:/Users/timot/Documents/work/EM3/handouts/EM3_Handout_PlaneWave.tex
-(C:/Users/timot/Documents/work/EM3/handouts/EM3_Handout_PlaneWave.tex
+**C:/Users/timot/Documents/work/EM3/EM3_handouts/EM3_Handout_PlaneWave.tex
+(C:/Users/timot/Documents/work/EM3/EM3_handouts/EM3_Handout_PlaneWave.tex
 LaTeX2e <2019-10-01> patch level 3
 
 ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tufte-latex\tufte-
@@ -1353,27 +1353,57 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 35.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 6.25204pt on input line 35.
+Package svg Info: Last page of `./svg-inkscape/brick_wall_svg-tex.pdf' is 1 on 
+input line 42.
+ (svg-inkscape/brick_wall_svg-tex.pdf_tex
+<./svg-inkscape/brick_wall_svg-tex.pdf, id=20, page=1, 134.46213pt x 63.47601pt
+>
+File: ./svg-inkscape/brick_wall_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/brick_wall_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/brick_wall_svg-tex.pdf , page1 used on 
+input line 56.
+(pdftex.def)             Requested size: 134.46211pt x 63.4797pt.
+)
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 45.
+(Font)              scaled to size 9.37807pt on input line 43.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 45.
+(Font)              scaled to size 7.29405pt on input line 43.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 43.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 45.
+(Font)              scaled to size 9.37807pt on input line 43.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 45.
+(Font)              scaled to size 7.29405pt on input line 43.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 43.
+Package svg Info: Last page of `./svg-inkscape/planewave_dielectric_svg-tex.pdf
+' is 1 on input line 53.
 
-
-LaTeX Warning: Marginpar on page 1 moved.
-
-
-LaTeX Warning: Marginpar on page 1 moved.
+(svg-inkscape/planewave_dielectric_svg-tex.pdf_tex
+<./svg-inkscape/planewave_dielectric_svg-tex.pdf, id=22, page=1, 136.75716pt x 
+67.71536pt>
+File: ./svg-inkscape/planewave_dielectric_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/planewave_dielectric_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/planewave_dielectric_svg-tex.pdf , page
+1 used on input line 56.
+(pdftex.def)             Requested size: 136.75714pt x 67.71828pt.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 61.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 61.
 
 
 LaTeX Warning: Marginpar on page 1 moved.
 
 [1
 
-{C:/Users/timot/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/Users/timot/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./svg-inksc
+ape/brick_wall_svg-tex.pdf> <./svg-inkscape/planewave_dielectric_svg-tex.pdf
+
+pdfTeX warning: pdflatex (file ./svg-inkscape/planewave_dielectric_svg-tex.pdf)
+: PDF inclusion: multiple pdfs with page group included in a single page
+>]
 
 LaTeX Warning: Marginpar on page 2 moved.
 
@@ -1383,12 +1413,24 @@ LaTeX Warning: Marginpar on page 2 moved.
 
 LaTeX Warning: Marginpar on page 2 moved.
 
+[2]
 
-LaTeX Warning: Marginpar on page 2 moved.
+LaTeX Warning: Marginpar on page 3 moved.
+
+
+LaTeX Warning: Marginpar on page 3 moved.
+
+
+LaTeX Warning: Marginpar on page 3 moved.
+
+
+LaTeX Warning: Marginpar on page 3 moved.
+
+
+LaTeX Warning: Marginpar on page 3 moved.
 
 LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <10> not available
-(Font)              Font shape `T1/pplj/b/n' tried instead on input line 94.
-[2]
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 109.
 
 LaTeX Warning: Marginpar on page 3 moved.
 
@@ -1406,7 +1448,9 @@ LaTeX Warning: Marginpar on page 3 moved.
 LaTeX Warning: Marginpar on page 4 moved.
 
 
-LaTeX Warning: Marginpar on page 4 moved.
+Overfull \hbox (29.46713pt too wide) detected at line 173
+[]
+ []
 
 
 LaTeX Warning: Marginpar on page 4 moved.
@@ -1416,35 +1460,42 @@ LaTeX Warning: Marginpar on page 4 moved.
 
 
 LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+[4]
+
+LaTeX Warning: Marginpar on page 5 moved.
 
 
 Package bibentry Warning: You have used \nobibliography* 
 (bibentry)                without a following \bibliography.
 (bibentry)                You may not be able to run BibTeX.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
  (EM3_Handout_PlaneWave.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 171.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
 Package rerunfilecheck Info: File `EM3_Handout_PlaneWave.out' has not changed.
-(rerunfilecheck)             Checksum: FAFCFD8BD7C66815CFF901F5E811AAAF;269.
+(rerunfilecheck)             Checksum: 0360115A8D5E3E8E8F24B150F611E831;490.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.75237pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
  ) 
 Here is how much of TeX's memory you used:
- 28907 strings out of 492448
- 520493 string characters out of 3119979
- 608023 words of memory out of 3000000
- 32789 multiletter control sequences out of 15000+200000
- 656035 words of font info for 267 fonts, out of 3000000 for 9000
+ 28984 strings out of 492448
+ 522531 string characters out of 3119979
+ 610967 words of memory out of 3000000
+ 32845 multiletter control sequences out of 15000+200000
+ 665164 words of font info for 293 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 52i,13n,67p,835b,785s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 52i,13n,73p,819b,785s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
 }<C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmex10.pfb><C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
@@ -1459,9 +1510,9 @@ ls/msam10.pfb><C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw
 /palatino/uplb8a.pfb><C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
 pe1/urw/palatino/uplr8a.pfb><C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/urw/palatino/uplri8a.pfb>
-Output written on EM3_Handout_PlaneWave.pdf (4 pages, 149406 bytes).
+Output written on EM3_Handout_PlaneWave.pdf (5 pages, 172229 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 34 named destinations out of 1000 (max. 500000)
- 1041 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 205 PDF objects out of 1000 (max. 8388607)
+ 41 named destinations out of 1000 (max. 500000)
+ 1077 words of extra memory for PDF output out of 10000 (max. 10000000)
 
