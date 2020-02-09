@@ -4,6 +4,7 @@
 \usepackage{bm}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{physics} %for Re, Im symbol change
 \usepackage{siunitx}
 \sisetup{detect-all}
 \usepackage{svg}
@@ -19,7 +20,7 @@
 \newcommand{\uv}{\uvec{v}}
 \newcommand{\vv}{\vec{v}}
 \newcommand{\ua}{\uvec{a}}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert}% %defined in physics package
 
 \makeatletter
 \providecommand\add@text{}
@@ -176,7 +177,6 @@ then substitute into Eq.~\ref{eq:diffEfullx} and eliminate common factors
 \end{equation} 
 where the newly-introduced propagation constant is complex $\gamma = \alpha + j\beta$, such that $\beta$ continues to describe the phase constant as before (which relates to the wavelength), but we add in a new term, the attenuation constant $\alpha$ that represents the spatial decay of the wave (a decaying wave does not change wavelength, just amplitude, hence $\alpha$ and $\beta$ are separate). The more conductive the material, the bigger is $\alpha$, and the quicker the decay of the wave. 
 
-
 \section{Attenuation constant}
 The attenuation constant $\alpha$ can be worked out by substituting Eq.~\ref{eq:lossysolution} into Eq.~\ref{eq:diffEfullx} to obtain the dispersion relation, then solving for $\gamma$ (of which $\alpha$ is the real part). 
 %\marginnote{
@@ -188,31 +188,62 @@ The attenuation constant $\alpha$ can be worked out by substituting Eq.~\ref{eq:
 %}
 We first perform the substitution
 \begin{equation}
-\gamma^{2}Ae^{j\omega{}t-\gamma{}x} = j\mu\sigma\omega{}Ae^{j\omega{}t-\gamma{}x} - \mu\epsilon\omega^{2}Ae^{j\omega{}t-\gamma{}x},
+\gamma^{2}Ae^{j\omega{}t-\gamma{}z} = j\mu\sigma\omega{}Ae^{j\omega{}t-\gamma{}z} - \mu\epsilon\omega^{2}Ae^{j\omega{}t-\gamma{}z},
 \end{equation}
-then remove the common factor of $Ae^{j\omega{}t-\gamma{}x}$ to give
+then remove the common factor of $Ae^{j\omega{}t-\gamma{}z}$ to give
 \begin{equation}
 \gamma^{2} = j\omega\mu\sigma - \omega^{2}\mu\epsilon
 \end{equation}
 which rearranges to\sidenote{spot that we play around with $j$ terms to neaten up the equation} \marginnote{In the EM3 formula sheet, $\gamma$ is given using a different notation for the square root, but is the same equation
 \[ \gamma = \left[ j\omega\mu\left(\sigma + j\omega\epsilon\right)\right]^{\frac{1}{2}} \]}
 \begin{equation}
-\gamma = \sqrt{j\omega\mu\left(\sigma + j\omega\epsilon\right)}
+\gamma = \sqrt{j\omega\mu\left(\sigma + j\omega\epsilon\right)}\label{eq:gamma}
 \end{equation}
 
-Things get a bit tricky now because there is no simple algebraic manipulation that will result in a general case we can use across all types of media. However, for the conductive material we are in, the case is at least relatively straightforward, because in a lossy material $\frac{\sigma}{\omega} >> \epsilon$, although for the arrangement of this equation on the EM3 formula sheet, it is easier to think of it as $\epsilon \to 0$, giving\sidenote{We'll need to use this identity \[ \sqrt{j}=\frac{(1+j)}{\sqrt{2}}\]}
+Things get a bit tricky now because there is no simple algebraic manipulation that will result in a general case we can use across all types of media that gives us nice expressions for $\alpha$ and $\beta$. So we need to consider the material we are in, simplify $\gamma$ and then solve\sidenote{The attenuation and phase constants can be found by \[ \alpha = \Re(\gamma)\]
+\[ \beta = \Im(\gamma)\]
+} for $\alpha$ and $\beta$. For the conductive material we consider in this section, the case is at least relatively straightforward, because in a lossy material $\frac{\sigma}{\omega} >> \epsilon$, although for the arrangement of this equation on the EM3 formula sheet, it is easier to think of it as $\epsilon \to 0$, giving\sidenote{We'll need to use this identity \[ \sqrt{j}=\frac{(1+j)}{\sqrt{2}}\]}
 \begin{equation}
-\gamma \approx \frac{1}{\sqrt{2}}\sqrt{\omega\mu\sigma}(j+1)
+\gamma \approx \frac{1}{\sqrt{2}}\sqrt{\omega\mu\sigma}(j+1)\label{eq:gammaconductive}
 \end{equation}
-If you are struggling to figure out how to re-arrange the equation, your bail-out option is to substitute everything in and work out the complex number numerically. You'll still need this identity though
+If you are struggling to figure out how to re-arrange the equation, your bail-out option is to substitute everything into Eq.~\ref{eq:gamma} and work out the complex number numerically. There will still be a $j$ under the square root sign, so you will still need this identity to be able to find $\alpha$ and $\beta$ (this \emph{is} examinable, and not on the formula sheet)
 \begin{equation} 
 \sqrt{j}=\frac{(1+j)}{\sqrt{2}}.
 \end{equation}
 
-We'll take a look at the consequences of this large attenuation in a conductive medium in a worked example.
+\section{Skin depth}
+The attenuation constant is large in a conductive medium - this is why we shield radio frequency components in metal boxes when we want to reduce interference from external waves. Consider the example of a wave of frequency
+\sidenote{Remember to convert to radian frequency $\omega=2\pi{}f$} $f = \SI{100}{\mega\hertz}$ travelling in a gold, a good conductor with $\sigma = 6\times10^7\SI{}{\siemens\per\meter}$. Substituting these values into Eq.~\ref{eq:gammaconductive} we get
+\begin{equation}
+\gamma \approx \frac{1}{\sqrt{2}}\sqrt{2\pi\times 10^8\times4\pi\times 10^{-7}\times6\times 10^{7}}(j+1)
+\end{equation}
+where
+\begin{equation}
+\alpha = \Re(\gamma) \approx 1.54\times 10^5\SI{}{\neper\per\metre}
+\end{equation}
+You'll see a new unit used here, the Neper ($\SI{}{\neper}$), which is dimensionless and used to express ratios in terms of natural logarithms, much as decibels do so for logarithms to the base 10. To get a better feel for how the $\alpha$ value of a given material affects a wave at a given frequency, we often translate it into a measure of how far the wave will penetrate before falling to a certain fraction of its original voltage. That fraction is, by convention , $\frac{1}{e}$ for the skin depth $\delta$,
+\begin{align}
+\frac{1}{e} &= \frac{E_x(z=\delta)}{E_x(z=0)} \\
+&= \frac{e^{-\alpha \delta}}{e^0}  
+\end{align}
+hence we can solve for $\delta$ by taking the natural logarithm of both sides
+\begin{align}
+\ln(\frac{1}{e}) &= -\alpha \delta \\
+\ln{1}-\ln{e} &= -\alpha\delta \\
+0 - 1 &= -\alpha\delta
+\end{align}
+\begin{equation}
+\boxed{\delta = \sqrt{\frac{2}{\omega\mu\sigma}} = \sqrt{\frac{1}{\pi{}f\mu\sigma}}   }
+\end{equation}
+
+The skin depth for our example of gold at $\SI{100}{\mega\hertz}$ is $\delta=\SI{6.5}{\micro\meter}$. A complete wavelength\sidenote{In all materials
+\[ \lambda=\frac{2\pi}{\beta} \] 
+In a conductor
+\[ \beta = \frac{1}{\delta} \] so in a conductor
+\[ \lambda = 2\pi\delta \]} is $2\pi\delta$, yet the wave is considered fully attenuated when it reaches 1\% of its original amplitude, at $4.6\delta$ \marginnote{$e^{-4.6}=0.01$}. Since $4.6 < 2\pi$, not even a full wavelength of the $\SI{100}{\mega\hertz}$ wave penetrates into the gold.
 
 \section{Magnetic Field}
-We can use Faraday's Law (Eq.~\ref{eq:Fd} to work out the magnetic field for our plane wave, by substituting in Eq.~\ref{eq:lossysolution}, and recalling that $\vec{D} = \epsilon\vec{E}$
+So far so good - we've worked out the electric field. We need its counterpart magnetic field now (we can't have one without the other in a plane wave). We can use Faraday's Law (Eq.~\ref{eq:Fd} to work out the magnetic field for our plane wave, by substituting in Eq.~\ref{eq:lossysolution}, and recalling that $\vec{D} = \epsilon\vec{E}$
 %\begin{equation}
 %\nabla\times\vec{H} = \vec{J} + \frac{\partial\vec{D}}{\partial t} 
 %Ae^{j\omega{}t-\gamma{}x}\label{eq:foo}

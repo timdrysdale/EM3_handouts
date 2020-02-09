@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.19)  9 FEB 2020 14:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.19)  9 FEB 2020 15:57
 entering extended mode
 **C:/Users/timot/Documents/work/EM3/EM3_handouts/EM3_Handout_PlaneWave.tex
 (C:/Users/timot/Documents/work/EM3/EM3_handouts/EM3_Handout_PlaneWave.tex
@@ -775,8 +775,12 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/siunitx\siunitx.st
+("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/physics\physics.st
 y"
+Package: physics 
+
+("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3packages/xparse\
+xparse.sty"
 ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3kernel\expl3.sty
 "
 Package: expl3 2020-01-12 L3 programming layer (loader) 
@@ -945,17 +949,16 @@ File: l3backend-pdfmode.def 2019-04-06 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count287
 \l__pdf_internal_box=\box77
 ))
-("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3packages/xparse\
-xparse.sty"
 Package: xparse 2020-01-12 L3 Experimental document command parser
 \l__xparse_current_arg_int=\count288
 \g__xparse_grabber_int=\count289
 \l__xparse_m_args_int=\count290
 \l__xparse_v_nesting_int=\count291
-)
+))
+("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/siunitx\siunitx.st
+y"
 Package: siunitx 2020/01/15 v2.7u A comprehensive (SI) units package
-
-("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
+ ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \col@sep=\dimen181
 \ar@mcellbox=\box78
@@ -1098,47 +1101,47 @@ Package textgreek Info: Loaded fontmap: {eur/*/*}{U/eur/*/*} {phv/*/*}{U/psy/*/
 ) (EM3_Handout_PlaneWave.aux)
 \openout1 = `EM3_Handout_PlaneWave.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 3
-5.
+6.
 
 ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 36.
 LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 3
-5.
+6.
 
 ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cbfonts-fd\lgrcmr.
 fd"
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Trying to load font information for T1+pplj on input line 3
-5.
+6.
 
 ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\t1pplj.fd"
 File: t1pplj.fd 2004/09/06 font definitions for T1/pplj.
 )
 \AtBeginShipoutBox=\box88
-Package hyperref Info: Link coloring OFF on input line 35.
+Package hyperref Info: Link coloring OFF on input line 36.
 
 ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.s
 ty"
@@ -1154,16 +1157,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count312
 )
-LaTeX Info: Redefining \ref on input line 35.
-LaTeX Info: Redefining \pageref on input line 35.
-LaTeX Info: Redefining \nameref on input line 35.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
+LaTeX Info: Redefining \nameref on input line 36.
  (EM3_Handout_PlaneWave.out) (EM3_Handout_PlaneWave.out)
 \@outlinefile=\write3
 \openout3 = `EM3_Handout_PlaneWave.out'.
 
 
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 35.
+LaTeX Info: Redefining \selectfont on input line 36.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1312,51 +1315,51 @@ LGR\textaristerikeraia already defined.
 fontencoding LGR patched
 )
 LaTeX Font Info:    Trying to load font information for OT1+pplx on input line 
-35.
+36.
  ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1pplx.fd
 "
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
 )
 LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
-35.
+36.
 
 ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omlzplm.fd"
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-35.
+36.
  ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omszplm.fd
 "
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
-35.
+36.
 
 ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omxzplm.fd"
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-35.
+36.
  ("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1zplm.fd
 "
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 35.
+(Font)              scaled to size 10.42007pt on input line 36.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 35.
+(Font)              scaled to size 7.91925pt on input line 36.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 35.
+(Font)              scaled to size 6.25204pt on input line 36.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 35.
+(Font)              scaled to size 10.42007pt on input line 36.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 35.
+(Font)              scaled to size 7.91925pt on input line 36.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 35.
+(Font)              scaled to size 6.25204pt on input line 36.
 Package svg Info: Last page of `./svg-inkscape/brick_wall_svg-tex.pdf' is 1 on 
-input line 42.
+input line 43.
  (svg-inkscape/brick_wall_svg-tex.pdf_tex
-<./svg-inkscape/brick_wall_svg-tex.pdf, id=20, page=1, 134.46213pt x 63.47601pt
+<./svg-inkscape/brick_wall_svg-tex.pdf, id=24, page=1, 134.46213pt x 63.47601pt
 >
 File: ./svg-inkscape/brick_wall_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/brick_wall_svg-tex.pdf, page 1>
@@ -1365,22 +1368,22 @@ input line 56.
 (pdftex.def)             Requested size: 134.46211pt x 63.4797pt.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 43.
+(Font)              scaled to size 9.37807pt on input line 44.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 43.
+(Font)              scaled to size 7.29405pt on input line 44.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 43.
+(Font)              scaled to size 5.21004pt on input line 44.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 43.
+(Font)              scaled to size 9.37807pt on input line 44.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 43.
+(Font)              scaled to size 7.29405pt on input line 44.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 43.
+(Font)              scaled to size 5.21004pt on input line 44.
 Package svg Info: Last page of `./svg-inkscape/planewave_dielectric_svg-tex.pdf
-' is 1 on input line 53.
+' is 1 on input line 54.
 
 (svg-inkscape/planewave_dielectric_svg-tex.pdf_tex
-<./svg-inkscape/planewave_dielectric_svg-tex.pdf, id=22, page=1, 136.75716pt x 
+<./svg-inkscape/planewave_dielectric_svg-tex.pdf, id=26, page=1, 136.75716pt x 
 67.71536pt>
 File: ./svg-inkscape/planewave_dielectric_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/planewave_dielectric_svg-tex.pdf, page 1>
@@ -1389,9 +1392,9 @@ Package pdftex.def Info: ./svg-inkscape/planewave_dielectric_svg-tex.pdf , page
 (pdftex.def)             Requested size: 136.75714pt x 67.71828pt.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 61.
+(Font)              scaled to size 8.33606pt on input line 62.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 61.
+(Font)              scaled to size 8.33606pt on input line 62.
 
 
 LaTeX Warning: Marginpar on page 1 moved.
@@ -1430,7 +1433,7 @@ LaTeX Warning: Marginpar on page 3 moved.
 LaTeX Warning: Marginpar on page 3 moved.
 
 LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <10> not available
-(Font)              Font shape `T1/pplj/b/n' tried instead on input line 109.
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 110.
 
 LaTeX Warning: Marginpar on page 3 moved.
 
@@ -1448,9 +1451,12 @@ LaTeX Warning: Marginpar on page 3 moved.
 LaTeX Warning: Marginpar on page 4 moved.
 
 
-Overfull \hbox (29.46713pt too wide) detected at line 173
+Overfull \hbox (29.46713pt too wide) detected at line 174
 []
  []
+
+
+LaTeX Warning: Marginpar on page 4 moved.
 
 
 LaTeX Warning: Marginpar on page 4 moved.
@@ -1469,33 +1475,52 @@ LaTeX Warning: Marginpar on page 4 moved.
 LaTeX Warning: Marginpar on page 5 moved.
 
 
+LaTeX Warning: Marginpar on page 5 moved.
+
+[5]
+LaTeX Font Info:    Trying to load font information for TS1+pplj on input line 
+239.
+
+("C:\Users\timot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1pplj.fd"
+File: ts1pplj.fd 2004/09/06 font definitions for TS1/pplj.
+)
+
+LaTeX Warning: Marginpar on page 6 moved.
+
+
+LaTeX Warning: Marginpar on page 6 moved.
+
+
+LaTeX Warning: Marginpar on page 6 moved.
+
+
 Package bibentry Warning: You have used \nobibliography* 
 (bibentry)                without a following \bibliography.
 (bibentry)                You may not be able to run BibTeX.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 251.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 251.
  (EM3_Handout_PlaneWave.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 251.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 251.
 Package rerunfilecheck Info: File `EM3_Handout_PlaneWave.out' has not changed.
-(rerunfilecheck)             Checksum: 0360115A8D5E3E8E8F24B150F611E831;490.
+(rerunfilecheck)             Checksum: 3294250B81D8EC3ABA72DB3691B13D99;587.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.75237pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 251.
  ) 
 Here is how much of TeX's memory you used:
- 28984 strings out of 492448
- 522531 string characters out of 3119979
- 610967 words of memory out of 3000000
- 32845 multiletter control sequences out of 15000+200000
- 665164 words of font info for 293 fonts, out of 3000000 for 9000
+ 29580 strings out of 492448
+ 528230 string characters out of 3119979
+ 622272 words of memory out of 3000000
+ 33423 multiletter control sequences out of 15000+200000
+ 669069 words of font info for 301 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 52i,13n,73p,819b,785s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 52i,13n,73p,819b,847s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
 }<C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmex10.pfb><C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
@@ -1510,9 +1535,9 @@ ls/msam10.pfb><C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw
 /palatino/uplb8a.pfb><C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
 pe1/urw/palatino/uplr8a.pfb><C:/Users/timot/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/urw/palatino/uplri8a.pfb>
-Output written on EM3_Handout_PlaneWave.pdf (5 pages, 172229 bytes).
+Output written on EM3_Handout_PlaneWave.pdf (6 pages, 181299 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 1077 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 225 PDF objects out of 1000 (max. 8388607)
+ 51 named destinations out of 1000 (max. 500000)
+ 1085 words of extra memory for PDF output out of 10000 (max. 10000000)
 
