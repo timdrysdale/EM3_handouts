@@ -1,0 +1,200 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics} %for Re, Im symbol change
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage{svg}
+\usepackage[utf8x]{inputenc}
+%\usepackage[greek,english]{babel} 
+\usepackage{textcomp}
+\usepackage{textgreek}
+%\numberwithin{equation}{section}
+
+\newcommand{\uvec}[1]{{\bm{\hat{\textnormal{\bfseries #1}}}}}
+\newcommand{\ux}{\uvec{x}}
+\newcommand{\uy}{\uvec{y}}
+\newcommand{\uv}{\uvec{v}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\ua}{\uvec{a}}
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert}% %defined in physics package
+
+\makeatletter
+\providecommand\add@text{}
+\newcommand\tagaddtext[1]{%
+  \gdef\add@text{#1\gdef\add@text{}}}% 
+\renewcommand\tagform@[1]{%
+  \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
+}
+\makeatother
+
+\title{EM3 Worked Example - Metal Coating}
+\author{Professor Timothy Drysdale}
+\begin{document}
+\maketitle
+
+\section{Question}
+\begin{margintable}
+\caption{Material properties as reported by the customer}
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline 
+Metal & $\sigma$ & Density & Cost \\
+          & (S/m) & (g/cc) & (£/g) \\
+\hline
+Au & $6.0\times10^7$ & 19.32 & 38.82 \\
+Ag & $6.2\times10^7$ & 10.49 & 0.48 \\
+Al & $3.5\times10^7$ & 2.70 & 0.001 \\
+Cu & $6.0\times10^7$ & 8.96 & 0.004 \\
+\hline
+\end{tabular}
+\label{tab:properties}
+\end{margintable}
+
+A customer wishes to put a metal coating onto a silicon wafer of diameter $\SI{450}{\milli\metre}$, such that the electric field strength of any W-band signal (70-110$\SI{}{\giga\hertz}$) is attenuated by at least 30dB upon transmission through the metal coating, ignoring the effects of reflections at the material boundaries. Four metals are available to their process, as shown in Table~\ref{tab:properties}. Which metal is going to be the 
+\begin{enumerate}
+\item lightest
+\item cheapest
+\item thinnest
+\item best overall compromise?
+\end{enumerate}
+
+\section{Solution}
+\begin{marginfigure}
+\includesvg{metal_coating}
+\caption{Field strength must decay in the metal by 30dB}
+\label{fig:graph}
+\end{marginfigure}
+
+First we interpret the question a bit. We are ignoring reflections, because they are part of a separate analysis and for some reason the customer is not sharing with us (maybe it is classified). Whatever the field strength is immediately inside the metal, $E(0^+)$, the metal must be made thick enough that it decays by 30dB before meeting the silicon, as shown in Figure~\ref{fig:graph}. 
+
+\subsection{Which frequency do we choose?}
+We have been given a band of frequencies. Will the higher or lower frequencies need the thickest metal? We can attenuate some frequencies more than 30dB, we just can't attentuate less! 
+We know from the formula sheet that the propagation constant $\gamma$ is 
+\begin{equation}
+\gamma = \left[j\omega\mu\left(\sigma+j\omega\epsilon \right)\right]^{\frac{1}{2}}
+\end{equation}
+And we know that the decay is proportional to distance 
+\begin{equation}
+E(z) = e^{-\alpha z}
+\label{eq:ez}
+\end{equation}
+where $\alpha = \Re{\gamma}$. Since $\sigma >> \omega\epsilon$,
+\begin{equation}
+\gamma = \left[j\omega\mu\sigma\right]^{\frac{1}{2}}
+\end{equation}
+We can find $\alpha$ by taking the real part\marginnote{\[\sqrt{j}=\frac{1+j}{\sqrt{2}}\]} of $\gamma$
+\begin{equation}
+\boxed{\alpha = \sqrt{\frac{\omega\mu\sigma}{2}}}
+\end{equation}
+
+ The smaller the value of $\alpha$ the thicker the metal we need. For a given metal,
+ \begin{equation}
+ \alpha \propto \sqrt{\omega}
+ \end{equation}
+so we must do our calculations at the lowest frequency ($\SI{70}{\giga\hertz}$).
+
+\subsection{How do we find $z$ as a function of $\alpha$?}
+
+The definition of a decibel ratio for a field is
+\begin{equation}
+L_f = 20\log_{10}\left(\frac{E}{E_{ref}}\right).
+\end{equation}
+Substituting our specification for a 30dB attenuation we have
+\begin{equation}
+-30 = 20\log_{10}\left(\frac{E(z)}{E(0^+)}\right)
+\end{equation}
+Rearrange and take the antilog of both sides
+\begin{equation}
+10^\frac{-30}{20} = \frac{E(z)}{E(0^+)}
+\end{equation}
+Substitute in Eq.~\ref{eq:ez} twice
+\begin{equation}
+10^\frac{-30}{20} = \frac{e^{-\alpha z}}{e^0}
+\end{equation}
+Simplify and solve for $z$ by taking the natural logarithm
+\begin{equation}
+\ln{10^{-1.5}} = -\alpha z
+\end{equation}
+hence
+\begin{equation}
+\boxed{z = \frac{3.45}{\alpha}}
+\end{equation}
+
+Now we can find the thicknesses required for each metal, as shown in Table~\ref{tab:thicknesses}.
+\begin{margintable}
+\caption{Thicknesses of metal needed for 30dB attenuation at $\SI{70}{\giga\hertz}$}
+\centering
+\begin{tabular}{|l|c|}
+\hline 
+Metal & $z$ \\
+& ($\SI{}{\micro\metre}$)\\
+\hline
+Au & 0.84 \\
+Ag & 0.82 \\
+Al &  1.11 \\
+Cu & 0.84 \\
+\hline
+\end{tabular}
+\label{tab:thicknesses}
+\end{margintable}
+The thinnest coating is Silver (Ag).
+Calculating a thickness like this is prime fare for an exam. What follows next is unlikely to make its way into an exam, but is typical of the sort of thing you might consider in a real-world scenario.
+
+\subsection{What does it weigh?}
+
+The wafer has an area of $\SI{1590}{\centi\metre\squared}$, so the volume $V$ of metal (in cubic centimetres) needed to coat a single side is
+\begin{equation}
+V = 0.1590z 
+\end{equation}
+where $z$ is in microns.  The weight $W$ (in grams) is 
+\begin{equation}
+W = V\rho
+\end{equation}
+where $\rho$ is the metal density in $\SI{}{\gram\per\centi\metre\cubed}$ 
+The weight per micron of metal, for coating one side of the wafer, and total weight of the coating is given in Table~\ref{tab:weight} by substituting in the values from Table~\ref{tab:properties}.
+\begin{margintable}
+\caption{Weight of the metal coatings in \protect{Table~\ref{tab:thicknesses}}}
+\centering
+\begin{tabular}{|l|c|c|}
+\hline 
+Metal & weight/$\mu m$ & weight\\
+& (g/$\mu m$) & (g)\\
+\hline
+Au & 3.01 & 2.58  \\
+Ag & 1.67 &  1.37 \\
+Al &  0.42 & 0.47 \\
+Cu & 1.42 & 1.19\\
+\hline
+\end{tabular}
+\label{tab:weight}
+\end{margintable}
+
+The lightest coating is Aluminum (Al).
+
+\subsection{What does it cost?}
+We can obtain the raw material cost from the values in Table~\ref{tab:properties} and multiply by the weight we need from Table~\ref{tab:weight}, giving the cost per wafer side in Table~\ref{tab:cost}. The cheapest metal is Aluminium.
+
+\begin{margintable}
+\caption{Cost of the coatings in \protect{Table~\ref{tab:thicknesses}} }
+\centering
+\begin{tabular}{|l|c|}
+\hline 
+Metal & cost \\
+\hline
+Au & £99.96 \\
+Ag & 65.60p \\
+Al &  0.05p\\
+Cu & 0.48p \\
+\hline
+\end{tabular}
+\label{tab:cost}
+\end{margintable}
+
+\subsection{Best overall compromise}
+It is tempting to assume that Aluminium is the best overall compromise, but other factors are likely to be taken into account, such as ease of production, corrosion resistance, contact resistance after environmental exposure. For that reason, it is possible that the customer may choose to go with gold or silver rather than aluminium or copper. There is no ``standard'' answer to this last part of the question, but whatever your decision, it will still be informed by the analysis of the electromagnetic performance.
+
+\end{document}
